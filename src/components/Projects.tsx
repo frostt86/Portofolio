@@ -1,4 +1,3 @@
-import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const projects = [
@@ -6,14 +5,14 @@ const projects = [
     title: 'Electronic Voting System',
     year: '2025',
     role: 'Project Leader',
-    technologies: ['Java', 'Spring Boot', 'MySQL', 'Solidity', 'Stellar', 'Angular'],
+    technologies: ['Java', 'Spring Boot', 'MongoDB', 'Solidity', 'React'],
     description: 'Led the development of a secure and transparent electronic voting system utilizing blockchain technology.'
   },
   {
     title: 'Real-time Event Ticketing System',
     year: '2024',
     role: 'Full-Stack Developer',
-    technologies: ['Angular', 'Spring Boot', 'MySQL'],
+    technologies: ['Angular', 'Spring Boot', 'NoSQL'],
     description: 'Developed a comprehensive event ticketing platform with real-time booking capabilities.'
   },
   {
