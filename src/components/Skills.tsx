@@ -1,4 +1,3 @@
-import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const specialSkills = ['Spring Boot', 'Angular', 'Solidity', 'SQL'];
