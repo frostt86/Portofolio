@@ -27,7 +27,7 @@ const technicalSkills = [
   },
   {
     name: 'Boomi',
-    icon: 'https://images.app.goo.gl/QipGDSSfwTVHGRRK7'
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Boomi-logo.svg/512px-Boomi-logo.svg.png'
   },
   {
     name: 'Elasticsearch',
@@ -144,19 +144,19 @@ export default function Skills() {
               </div>
 
               <style jsx>{`
-              @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-              
-              .animate-scroll {
-                animation: scroll 30s linear infinite;
-              }
-              
-              .animate-scroll:hover {
-                animation-play-state: paused;
-              }
-            `}</style>
+                @keyframes scroll {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+
+                .animate-scroll {
+                  animation: scroll 30s linear infinite;
+                }
+
+                .animate-scroll:hover {
+                  animation-play-state: paused;
+                }
+              `}</style>
             </div>
 
             <div>
