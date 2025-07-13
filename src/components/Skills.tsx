@@ -26,6 +26,14 @@ const technicalSkills = [
     icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg'
   },
   {
+    name: 'Boomi',
+    icon: 'https://www.boomi.com/wp-content/uploads/boomi-icon-color.svg'
+  },
+  {
+    name: 'Elasticsearch',
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/elasticsearch/elasticsearch-original.svg'
+  },
+  {
     name: 'NoSQL',
     icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg'
   }
@@ -55,7 +63,7 @@ export default function Skills() {
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-200 mb-6 sm:mb-8 text-center">Technical Skills</h3>
 
               {/* Technical Skills - Unified Cards with Icons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 {technicalSkills.map((skill, index) => (
                     <div
                         key={index}
