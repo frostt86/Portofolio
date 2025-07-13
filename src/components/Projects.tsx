@@ -2,6 +2,13 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const projects = [
   {
+    title: 'Boomi Process Automation & Optimization',
+    year: '2025',
+    role: 'Boomi Integration Consultant',
+    technologies: ['Boomi AtomSphere', 'Process Optimization', 'Enterprise Integration', 'Automation'],
+    description: 'Optimized 4 critical integration processes at Yenlo, achieving 40% performance improvement while enhancing code readability and maintainability.'
+  },
+  {
     title: 'Electronic Voting System',
     year: '2025',
     role: 'Project Leader',

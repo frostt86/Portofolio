@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6890f81d-2367-4ca3-a4f9-a4b806a1a0d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Certifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Certifications.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="6890f81d-2367-4ca3-a4f9-a4b806a1a0d2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +67,7 @@
       <workItem from="1740646108856" duration="294000" />
       <workItem from="1740646785789" duration="12000" />
       <workItem from="1741279538105" duration="2776000" />
-      <workItem from="1752425124124" duration="435000" />
+      <workItem from="1752425124124" duration="765000" />
     </task>
     <servers />
   </component>
