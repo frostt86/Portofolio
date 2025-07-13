@@ -27,7 +27,7 @@ const technicalSkills = [
   },
   {
     name: 'Boomi',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Boomi-logo.svg/512px-Boomi-logo.svg.png'
+    icon: 'https://logos-world.net/wp-content/uploads/2022/02/Boomi-Logo.png'
   },
   {
     name: 'Elasticsearch',
@@ -68,7 +68,7 @@ export default function Skills() {
                   {/* First set of skills */}
                   {technicalSkills.map((skill, index) => (
                       <div
-                          key={index}
+                          key={`first-${index}`}
                           className="group relative bg-gradient-to-br from-purple-900/40 to-purple-800/20
                              p-6 rounded-xl backdrop-blur-sm border border-purple-700/30
                              hover:border-purple-500/50 transition-all duration-500
@@ -88,10 +88,12 @@ export default function Skills() {
                                 className="w-10 h-10 object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
                                 onError={(e) => {
                                   e.target.style.display = 'none';
-                                  e.target.nextSibling.style.display = 'block';
+                                  e.target.nextSibling.style.display = 'flex';
                                 }}
                             />
-                            <div className="w-8 h-8 bg-purple-500/40 rounded-full hidden"></div>
+                            <div className="w-8 h-8 bg-purple-500/40 rounded-full hidden items-center justify-center">
+                              <span className="text-white font-bold text-sm">{skill.name.charAt(0)}</span>
+                            </div>
                           </div>
                           <h4 className="text-lg font-semibold text-white group-hover:text-purple-200
                                    transition-colors duration-300">{skill.name}</h4>
@@ -106,7 +108,7 @@ export default function Skills() {
                   {/* Duplicate set for seamless loop */}
                   {technicalSkills.map((skill, index) => (
                       <div
-                          key={`duplicate-${index}`}
+                          key={`second-${index}`}
                           className="group relative bg-gradient-to-br from-purple-900/40 to-purple-800/20
                              p-6 rounded-xl backdrop-blur-sm border border-purple-700/30
                              hover:border-purple-500/50 transition-all duration-500
@@ -126,10 +128,12 @@ export default function Skills() {
                                 className="w-10 h-10 object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
                                 onError={(e) => {
                                   e.target.style.display = 'none';
-                                  e.target.nextSibling.style.display = 'block';
+                                  e.target.nextSibling.style.display = 'flex';
                                 }}
                             />
-                            <div className="w-8 h-8 bg-purple-500/40 rounded-full hidden"></div>
+                            <div className="w-8 h-8 bg-purple-500/40 rounded-full hidden items-center justify-center">
+                              <span className="text-white font-bold text-sm">{skill.name.charAt(0)}</span>
+                            </div>
                           </div>
                           <h4 className="text-lg font-semibold text-white group-hover:text-purple-200
                                    transition-colors duration-300">{skill.name}</h4>
@@ -150,11 +154,18 @@ export default function Skills() {
                 }
 
                 .animate-scroll {
-                  animation: scroll 30s linear infinite;
+                  animation: scroll 20s linear infinite;
+                  will-change: transform;
                 }
 
                 .animate-scroll:hover {
                   animation-play-state: paused;
+                }
+
+                /* Ensure smooth infinite loop */
+                .animate-scroll {
+                  display: flex;
+                  width: calc(200px * 18 + 8px * 17); /* 9 items * 2 sets * (width + gap) */
                 }
               `}</style>
             </div>
