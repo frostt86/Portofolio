@@ -27,7 +27,7 @@ const technicalSkills = [
   },
   {
     name: 'Boomi',
-    icon: 'https://logos-world.net/wp-content/uploads/2022/02/Boomi-Logo.png'
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Boomi-logo.svg'
   },
   {
     name: 'Elasticsearch',
@@ -87,6 +87,29 @@ export default function Skills() {
                                 alt={skill.name}
                                 className="w-10 h-10 object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
                                 onError={(e) => {
+                                  // Try alternative URLs for Boomi
+                                  if (skill.name === 'Boomi') {
+                                    const alternatives = [
+                                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Boomi-logo.svg/512px-Boomi-logo.svg.png',
+                                      'https://companieslogo.com/img/orig/BOOMI_BIG.D-6c3c7a66.png',
+                                      'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9IiM2MzY2RjEiLz48dGV4dCB4PSI1MCIgeT0iNTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCI+QjwvdGV4dD48L3N2Zz4='
+                                    ];
+
+                                    if (e.target.dataset.attemptCount) {
+                                      const attempt = parseInt(e.target.dataset.attemptCount);
+                                      if (attempt < alternatives.length) {
+                                        e.target.src = alternatives[attempt];
+                                        e.target.dataset.attemptCount = attempt + 1;
+                                        return;
+                                      }
+                                    } else if (e.target.src !== alternatives[0]) {
+                                      e.target.src = alternatives[0];
+                                      e.target.dataset.attemptCount = "1";
+                                      return;
+                                    }
+                                  }
+
+                                  // Final fallback: hide image and show letter
                                   e.target.style.display = 'none';
                                   e.target.nextSibling.style.display = 'flex';
                                 }}
