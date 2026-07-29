@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { ExternalLink, Github, Linkedin, X, Maximize2, Play, Pause, RotateCw } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Github, Linkedin, X, Maximize2 } from 'lucide-react';
 
 import innoservFirstPlace from '../assets/gallery/innoserv_first_place.jpg';
 import blockballotBooth from '../assets/gallery/blockballot_booth.jpg';
@@ -163,57 +163,6 @@ export default function Work() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
-  /* 3D Tactile Rotating Knob Dial State:
-     - isPaused: Pressing/clicking the dial knob toggles pause/play.
-     - dialAngle: Current physical rotation angle of the dial knob (degrees).
-     - activePhotoIndex: Current active photo index when scrubbing dial.
-  */
-  const [isPaused, setIsPaused] = useState<boolean>(false);
-  const [dialAngle, setDialAngle] = useState<number>(0);
-  const [activePhotoIndex, setActivePhotoIndex] = useState<number>(0);
-
-  const dialRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef<boolean>(false);
-  const startAngleRef = useRef<number>(0);
-
-  /* Press / Click Dial Knob Toggle */
-  const handleDialClick = () => {
-    setIsPaused((prev) => !prev);
-  };
-
-  /* Rotate Dial via Drag or Wheel */
-  const handleRotateStep = (deltaAngle: number) => {
-    setDialAngle((prevAngle) => {
-      const newAngle = prevAngle + deltaAngle;
-      const stepCount = Math.floor(newAngle / 45);
-      const newIndex = ((stepCount % gallery.length) + gallery.length) % gallery.length;
-      setActivePhotoIndex(newIndex);
-      return newAngle;
-    });
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    const delta = e.deltaY > 0 ? 30 : -30;
-    handleRotateStep(delta);
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    isDraggingRef.current = true;
-    startAngleRef.current = e.clientX;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDraggingRef.current) return;
-    const diff = e.clientX - startAngleRef.current;
-    startAngleRef.current = e.clientX;
-    handleRotateStep(diff * 1.5);
-  };
-
-  const handleMouseUp = () => {
-    isDraggingRef.current = false;
-  };
-
   return (
     <section id="work" className="py-20 max-w-[960px] mx-auto px-5">
       <hr className="section-divider mb-16" />
@@ -259,85 +208,27 @@ export default function Work() {
         ))}
       </div>
 
-      {/* ─── Event Gallery Header & 3D Tactile Rotating Knob Dial ─── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      {/* ─── Event Gallery Header ─── */}
+      <div className="flex items-center justify-between gap-4 mb-5">
         <div>
           <p className="section-label mb-1">Live Highlights</p>
           <h3 className="text-lg font-bold text-slate-900">Event Gallery</h3>
         </div>
 
-        {/* ─── 3D Neumorphic Rotating Knob Dial Control ─── */}
-        <div className="flex items-center gap-4">
-          <div className="text-right hidden sm:block">
-            <p className="text-xs font-mono font-bold text-slate-900 flex items-center gap-1.5 justify-end">
-              <span className={`w-2 h-2 rounded-full ${isPaused ? 'bg-amber-500 animate-pulse' : 'bg-emerald-500 animate-pulse'}`} />
-              {isPaused ? 'PAUSED' : 'AUTO-PLAY'}
-            </p>
-            <p className="text-[10px] font-mono text-slate-500">Rotate dial to cycle • Press to toggle</p>
-          </div>
-
-          {/* Recessed Neumorphic Ring Housing */}
-          <div 
-            className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#dbe2ee] border border-white/90 shadow-[inset_5px_5px_10px_#c2c9d6,inset_-5px_-5px_10px_#ffffff] flex items-center justify-center p-2 cursor-grab active:cursor-grabbing select-none"
-            onWheel={handleWheel}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-          >
-            
-            {/* 3D Extruded Rotating Knob Dial Body */}
-            <div
-              ref={dialRef}
-              onClick={handleDialClick}
-              className={`relative w-full h-full rounded-full bg-gradient-to-b from-[#f5f8fd] to-[#d4dceb] border border-white shadow-[6px_6px_14px_#b8c0cf,-6px_-6px_14px_#ffffff] transition-transform duration-150 flex items-center justify-center group ${
-                isPaused ? 'shadow-[inset_3px_3px_6px_#c2c9d6,inset_-3px_-3px_6px_#ffffff]' : ''
-              }`}
-              style={{
-                transform: `rotate(${dialAngle}deg)`,
-              }}
-              title="Rotate dial to scrub photos, press to pause/play"
-            >
-              {/* Ridged Grip Teeth Marks on Dial Edge */}
-              <div className="absolute inset-1 rounded-full border-2 border-dashed border-slate-300/80 pointer-events-none" />
-
-              {/* Orange Pointer Indicator Notch on Dial Rim */}
-              <div className="absolute top-1.5 w-1.5 h-3 rounded-full bg-[#ff6b35] shadow-[0_0_6px_#ff6b35]" />
-
-              {/* Center Tactile Push Button Icon */}
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#e6ecf5] border border-white shadow-[2px_2px_5px_#c2c9d6,-2px_-2px_5px_#ffffff] flex items-center justify-center text-slate-800 group-hover:text-[#ff6b35] transition-colors">
-                {isPaused ? <Play size={13} className="ml-0.5" /> : <Pause size={13} />}
-              </div>
-            </div>
-
-          </div>
-
-          <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#ff6b35] sm:hidden">
-            <RotateCw size={13} className="animate-spin" />
-            <span>Dial Knob</span>
-          </div>
-        </div>
+        <span className="pill pill-accent text-[11px]">
+          ● Hover photo to pause marquee • Click to expand
+        </span>
       </div>
 
-      {/* ─── Rolling Screen Gallery Container (Enlarged Photo Cards) ─── */}
-      <div className="w-full overflow-hidden rounded-2xl border border-white/80 bg-[#e6ecf5] p-3.5 shadow-[9px_9px_18px_#c2c9d6,-9px_-9px_18px_#ffffff] relative">
-        <div 
-          className="animate-rolling flex gap-4"
-          style={{ 
-            animationDuration: '28s',
-            animationPlayState: isPaused ? 'paused' : 'running'
-          }}
-        >
+      {/* ─── Smooth Hardware Accelerated Rolling Screen Gallery Container ─── */}
+      <div className="w-full overflow-hidden rounded-2xl border border-white/80 bg-[#e6ecf5] p-4 shadow-[9px_9px_18px_#c2c9d6,-9px_-9px_18px_#ffffff] relative">
+        <div className="animate-rolling flex gap-5">
           {rollingGallery.map((item, i) => {
             const originalIndex = i % gallery.length;
             return (
               <div
                 key={i}
-                className={`w-80 sm:w-[440px] aspect-[16/10] shrink-0 rounded-xl overflow-hidden cursor-pointer relative group/roll border bg-[#e2e8f2] transition-all duration-300 ${
-                  activePhotoIndex === originalIndex && isPaused
-                    ? 'border-[#ff6b35] shadow-[0_0_16px_rgba(255,107,53,0.4)] scale-[1.01]'
-                    : 'border-white/80 shadow-[6px_6px_14px_#c2c9d6,-6px_-6px_14px_#ffffff]'
-                }`}
+                className="w-80 sm:w-[480px] aspect-[16/10] shrink-0 rounded-xl overflow-hidden cursor-pointer relative group/roll border border-white/80 bg-[#e2e8f2] shadow-[6px_6px_14px_#c2c9d6,-6px_-6px_14px_#ffffff]"
                 onClick={() => setLightbox(originalIndex)}
               >
                 <img
@@ -345,13 +236,13 @@ export default function Work() {
                   alt={item.caption}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover/roll:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-85 group-hover/roll:opacity-100 transition-opacity flex flex-col justify-between p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-85 group-hover/roll:opacity-100 transition-opacity flex flex-col justify-between p-5">
                   <div className="self-end opacity-0 group-hover/roll:opacity-100 transition-opacity">
-                    <span className="p-2 rounded-full bg-slate-900/80 text-white inline-flex border border-white/20 shadow-md">
-                      <Maximize2 size={14} />
+                    <span className="p-2.5 rounded-full bg-slate-900/80 text-white inline-flex border border-white/20 shadow-md">
+                      <Maximize2 size={16} />
                     </span>
                   </div>
-                  <span className="text-xs sm:text-sm text-white font-bold leading-snug">
+                  <span className="text-sm sm:text-base text-white font-bold leading-snug">
                     {item.caption}
                   </span>
                 </div>

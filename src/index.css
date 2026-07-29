@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════
-   LIGHT MODE NEUMORPHISM (SOFT UI) DESIGN SYSTEM
+   LIGHT MODE NEUMORPHISM (HARDWARE ACCELERATED)
    ═══════════════════════════════════════════════ */
 :root {
   --bg: #e6ecf5;
   --bg-raised: #e6ecf5;
   --bg-elevated: #e0e6f0;
   --bg-inset: #dcdeee;
-  --border: rgba(255, 255, 255, 0.7);
+  --border: rgba(255, 255, 255, 0.8);
   --border-hover: rgba(255, 107, 53, 0.5);
   --text-primary: #0f172a;
   --text-secondary: #334155;
@@ -21,16 +21,16 @@
   --accent-blue: #2563eb;
   --accent-dark: #1f0b02;
   
-  /* Neumorphic Shadows for Light Mode (Soft UI) */
-  --neu-shadow-extruded: 9px 9px 18px #c2c9d6, -9px -9px 18px #ffffff;
-  --neu-shadow-hover: 12px 12px 24px #b8c0cf, -10px -10px 22px #ffffff;
-  --neu-shadow-inset: inset 5px 5px 10px #c5ccd8, inset -5px -5px 10px #ffffff;
-  --neu-shadow-btn: 6px 6px 14px #c2c9d6, -6px -6px 14px #ffffff;
-  --neu-shadow-btn-pressed: inset 4px 4px 8px #c2c9d6, inset -4px -4px 8px #ffffff;
+  /* Optimized Lightweight Neumorphic Shadows */
+  --neu-shadow-extruded: 6px 6px 14px #c2c9d6, -6px -6px 14px #ffffff;
+  --neu-shadow-hover: 8px 8px 18px #b8c0cf, -8px -8px 18px #ffffff;
+  --neu-shadow-inset: inset 3px 3px 6px #c5ccd8, inset -3px -3px 6px #ffffff;
+  --neu-shadow-btn: 4px 4px 10px #c2c9d6, -4px -4px 10px #ffffff;
+  --neu-shadow-btn-pressed: inset 2px 2px 4px #c2c9d6, inset -2px -2px 4px #ffffff;
 }
 
 /* ═══════════════════════════════════════════════
-   BASE
+   BASE & GPU HARDWARE ACCELERATION
    ═══════════════════════════════════════════════ */
 @layer base {
   html {
@@ -54,7 +54,7 @@
   }
 
   /* Custom scrollbar for WebKit */
-  ::-webkit-scrollbar { width: 7px; }
+  ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: rgba(255, 107, 53, 0.4); border-radius: 4px; }
   ::-webkit-scrollbar-thumb:hover { background: rgba(255, 107, 53, 0.8); }
@@ -73,10 +73,11 @@
    ═══════════════════════════════════════════════ */
 .card, .neu-card {
   background: var(--bg-raised);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 20px;
   box-shadow: var(--neu-shadow-extruded);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+  will-change: transform;
 }
 
 .card:hover, .neu-card:hover {
@@ -87,7 +88,7 @@
 
 .card-flat, .neu-card-flat {
   background: var(--bg-raised);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 18px;
   box-shadow: var(--neu-shadow-extruded);
 }
@@ -95,7 +96,7 @@
 /* Neumorphic Inset (Recessed Container / Inner Frame) */
 .neu-inset {
   background: #e2e8f2;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 16px;
   box-shadow: var(--neu-shadow-inset);
 }
@@ -103,15 +104,16 @@
 /* Neumorphic Tactile Button */
 .neu-btn {
   background: #e6ecf5;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: var(--neu-shadow-btn);
   color: var(--text-primary);
-  transition: all 0.25s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+  will-change: transform;
 }
 
 .neu-btn:hover {
   border-color: rgba(255, 107, 53, 0.4);
-  box-shadow: 8px 8px 18px #b8c0cf, -8px -8px 18px #ffffff;
+  box-shadow: 6px 6px 14px #b8c0cf, -6px -6px 14px #ffffff;
   color: var(--accent);
 }
 
@@ -124,15 +126,16 @@
   background: linear-gradient(145deg, #ff7843, #e55622);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 6px 6px 14px #c2c9d6, -6px -6px 14px #ffffff;
+  box-shadow: 5px 5px 12px #c2c9d6, -5px -5px 12px #ffffff;
   font-weight: 700;
-  transition: all 0.25s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  will-change: transform;
 }
 
 .neu-btn-accent:hover {
   background: linear-gradient(145deg, #3b82f6, #1d4ed8);
   color: #ffffff;
-  box-shadow: 8px 8px 18px #c2c9d6, -8px -8px 18px #ffffff;
+  box-shadow: 6px 6px 16px #c2c9d6, -6px -6px 16px #ffffff;
 }
 
 /* ═══════════════════════════════════════════════
@@ -148,31 +151,28 @@
   letter-spacing: 0.02em;
   border-radius: 999px;
   background: #e2e8f2;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: inset 2px 2px 5px #c5ccd8, inset -2px -2px 5px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: inset 2px 2px 4px #c5ccd8, inset -2px -2px 4px #ffffff;
   color: var(--text-secondary);
-  transition: all 0.25s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .pill:hover {
   background: rgba(255, 107, 53, 0.12);
   border-color: rgba(255, 107, 53, 0.3);
   color: var(--accent);
-  box-shadow: 3px 3px 8px #c2c9d6, -3px -3px 8px #ffffff;
 }
 
 .pill-accent {
   background: rgba(255, 107, 53, 0.14);
   border-color: rgba(255, 107, 53, 0.35);
   color: var(--accent);
-  box-shadow: inset 2px 2px 5px rgba(255, 107, 53, 0.15), inset -2px -2px 5px #ffffff;
 }
 
 .pill-blue {
   background: rgba(37, 99, 235, 0.12);
   border-color: rgba(37, 99, 235, 0.35);
   color: #2563eb;
-  box-shadow: inset 2px 2px 5px rgba(37, 99, 235, 0.15), inset -2px -2px 5px #ffffff;
 }
 
 /* ═══════════════════════════════════════════════
@@ -182,15 +182,15 @@
   overflow: hidden;
   border-radius: 14px;
   background: #e2e8f2;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: var(--neu-shadow-inset);
+  border: 1px solid rgba(255, 255, 255, 0.85);
 }
 
 .img-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .card:hover .img-frame img {
@@ -198,17 +198,20 @@
 }
 
 /* ═══════════════════════════════════════════════
-   INFINITE ROLLING MARQUEE ANIMATION
+   60FPS GPU HARDWARE ACCELERATED MARQUEE ANIMATION
    ═══════════════════════════════════════════════ */
 @keyframes rolling-screen {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .animate-rolling {
   display: flex;
   width: max-content;
-  animation: rolling-screen 28s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  animation: rolling-screen 32s linear infinite;
 }
 
 .animate-rolling:hover {
@@ -216,7 +219,7 @@
 }
 
 /* ═══════════════════════════════════════════════
-   SECTION HEADERS
+   SECTION HEADERS & DIVIDERS
    ═══════════════════════════════════════════════ */
 .section-label {
   font-family: 'Source Code Pro', monospace;
@@ -234,9 +237,6 @@
   letter-spacing: -0.02em;
 }
 
-/* ═══════════════════════════════════════════════
-   DIVIDERS
-   ═══════════════════════════════════════════════ */
 .section-divider {
   border: none;
   height: 2px;
@@ -245,16 +245,8 @@
 }
 
 /* ═══════════════════════════════════════════════
-   UTILITIES & OVERRIDES
+   SCROLL REVEAL OPTIMIZATION
    ═══════════════════════════════════════════════ */
-.email-link {
-  transition: color 0.2s ease;
-}
-.email-link:hover {
-  color: var(--accent) !important;
-}
-
-/* Force visibility — no scroll animation drop-off */
 .scroll-reveal,
 .scroll-reveal-left,
 .scroll-reveal-right,

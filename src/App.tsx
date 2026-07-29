@@ -4,11 +4,13 @@ import About from './components/About';
 import Work from './components/Work';
 import Posts from './components/Posts';
 import Contact from './components/Contact';
+import SideScrollbar from './components/SideScrollbar';
 
 function App() {
   return (
     <div className="min-h-screen bg-[#e6ecf5] text-slate-700 font-sans antialiased selection:bg-[#ff6b35] selection:text-white">
       <Navbar />
+      <SideScrollbar />
 
       <main>
         <Header />
