@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Linkedin, ExternalLink } from 'lucide-react';
 
 const awardsAndKeyCerts = [
   {
@@ -6,12 +7,20 @@ const awardsAndKeyCerts = [
     subtitle: 'Novalith Smart Pregnancy Belt',
     detail: 'Innovative wearable health-monitoring solution for expectant mothers.',
     category: 'Award Winner',
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7468995875151712256/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc',
   },
   {
     title: 'Java Programming Certificate',
     subtitle: 'Informatics Institute of Technology (IIT)',
     detail: 'Awarded with Distinction. Covered Spring Boot, Bootstrap, Thymeleaf, and Java.',
     category: 'Academic Distinction',
+  },
+  {
+    title: 'Sherlock & WSO2 Innovation Competition',
+    subtitle: 'WSO2 & Sherlock Hackathon Teamwork',
+    detail: 'AI and integration teamwork challenge exploring WSO2 API architecture and intelligence.',
+    category: 'Competition Feature',
+    link: 'https://www.linkedin.com/posts/pamitha-kularathne-ba2b06295_sherlock-wso2-teamwork-activity-7309983470678654977-1e9Q?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc',
   },
 ];
 
@@ -54,21 +63,36 @@ export default function Certifications() {
       </div>
 
       {/* Featured Awards Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 scroll-reveal">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 scroll-reveal">
         {awardsAndKeyCerts.map((item, idx) => (
-          <div key={idx} className="p-8 bg-surface-container border border-on-surface/20 border-l-4 border-l-tertiary">
-            <span className="px-2.5 py-1 bg-tertiary text-white font-label-sm text-[10px] uppercase font-bold mb-3 inline-block">
-              {item.category}
-            </span>
-            <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-1">
-              {item.title}
-            </h3>
-            <p className="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wider mb-2">
-              {item.subtitle}
-            </p>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              {item.detail}
-            </p>
+          <div key={idx} className="p-8 bg-surface-container border border-on-surface/20 border-l-4 border-l-tertiary flex flex-col justify-between">
+            <div>
+              <span className="px-2.5 py-1 bg-tertiary text-white font-label-sm text-[10px] uppercase font-bold mb-3 inline-block">
+                {item.category}
+              </span>
+              <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-1">
+                {item.title}
+              </h3>
+              <p className="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wider mb-2">
+                {item.subtitle}
+              </p>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                {item.detail}
+              </p>
+            </div>
+
+            {item.link && (
+              <div className="mt-4 pt-3 border-t border-on-surface/15">
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-label-sm text-xs text-tertiary uppercase tracking-widest flex items-center gap-1 font-bold hover:underline"
+                >
+                  <Linkedin size={14} /> LinkedIn Update <ExternalLink size={12} />
+                </a>
+              </div>
+            )}
           </div>
         ))}
       </div>

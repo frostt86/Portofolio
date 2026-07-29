@@ -1,3 +1,4 @@
+import { ExternalLink, Linkedin } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const coreCompetencies = [
@@ -8,6 +9,8 @@ const coreCompetencies = [
   'Integration Governance & Security',
   'Operational Reporting & Analytics',
 ];
+
+const LINKEDIN_YENLO_POST = 'https://www.linkedin.com/posts/ron-van-der-veeke-3a051a8b_last-week-i-finally-got-the-chance-to-meet-ugcPost-7409902097455947776-sowX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc';
 
 export default function About() {
   const ref = useScrollReveal();
@@ -110,6 +113,17 @@ export default function About() {
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-6">
               Built 5 production automation suites and 7 migration processes replacing manual work across managed customer environments with automated processing.
             </p>
+
+            <div className="mb-4">
+              <a
+                href={LINKEDIN_YENLO_POST}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-label-sm text-xs text-tertiary uppercase tracking-widest flex items-center gap-1.5 font-bold hover:underline"
+              >
+                <Linkedin size={14} /> View Yenlo Team Update on LinkedIn <ExternalLink size={12} />
+              </a>
+            </div>
 
             <div className="pt-4 border-t border-on-surface/15">
               <span className="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-2">

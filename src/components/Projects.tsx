@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { X, ExternalLink, Github, Image as ImageIcon } from 'lucide-react';
+import { ExternalLink, Github, Linkedin, X, Image as ImageIcon } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+
+import innoservFirstPlace from '../assets/gallery/innoserv_first_place.jpg';
+import blockballotBooth from '../assets/gallery/blockballot_booth.jpg';
 
 export interface Project {
   id: string;
@@ -11,11 +14,15 @@ export interface Project {
   colSpanClass: string;
   aspectRatioClass: string;
   githubUrl?: string;
+  linkedInUrl?: string;
   imageSrc?: string;
   technologies: string[];
   summary: string;
   highlights: string[];
 }
+
+const LINKEDIN_BLOCKBALLOT = 'https://www.linkedin.com/posts/pamitha-kularathne-ba2b06295_election-voting-srilanka-activity-7261064177136345088-2vpt?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc';
+const LINKEDIN_NOVALITH = 'https://www.linkedin.com/feed/update/urn:li:activity:7468995875151712256/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc';
 
 const projectsData: Project[] = [
   {
@@ -164,7 +171,8 @@ const projectsData: Project[] = [
     category: 'Blockchain & Web3 • Smart Contracts',
     colSpanClass: 'md:col-span-6',
     aspectRatioClass: 'aspect-[4/3]',
-    imageSrc: '',
+    linkedInUrl: LINKEDIN_BLOCKBALLOT,
+    imageSrc: blockballotBooth,
     technologies: [
       'Java',
       'Spring Boot',
@@ -189,7 +197,8 @@ const projectsData: Project[] = [
     category: 'Winner - InnoServ Awards 2025 (Taiwan)',
     colSpanClass: 'md:col-span-6',
     aspectRatioClass: 'aspect-[4/3]',
-    imageSrc: '',
+    linkedInUrl: LINKEDIN_NOVALITH,
+    imageSrc: innoservFirstPlace,
     technologies: [
       'Backend Development',
       'REST API Integration',
@@ -223,7 +232,7 @@ export default function Projects() {
           </h2>
         </div>
         <p className="font-body-md text-body-md text-on-surface-variant max-w-md">
-          A showcase of enterprise integration suites, full-stack web platforms, and award-winning hardware systems.
+          A showcase of enterprise integration suites, full-stack web platforms, and award-winning solutions.
         </p>
       </div>
 
@@ -271,11 +280,18 @@ export default function Projects() {
               <p className="font-label-sm text-label-sm text-outline uppercase tracking-wider">
                 {project.category}
               </p>
-              {project.githubUrl && (
-                <span className="font-label-sm text-[11px] text-tertiary uppercase tracking-widest flex items-center gap-1 font-bold">
-                  <Github size={12} /> GitHub Repo
-                </span>
-              )}
+              <div className="flex items-center gap-3">
+                {project.githubUrl && (
+                  <span className="font-label-sm text-[11px] text-tertiary uppercase tracking-widest flex items-center gap-1 font-bold">
+                    <Github size={12} /> GitHub
+                  </span>
+                )}
+                {project.linkedInUrl && (
+                  <span className="font-label-sm text-[11px] text-tertiary uppercase tracking-widest flex items-center gap-1 font-bold">
+                    <Linkedin size={12} /> Post
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         ))}
@@ -350,20 +366,29 @@ export default function Projects() {
               </ul>
             </div>
 
-            {/* GitHub Repo Button */}
-            {selectedProject.githubUrl && (
-              <div className="mb-6 pt-4 border-t border-on-surface/15">
+            {/* External Links */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-6 pt-4 border-t border-on-surface/15">
+              {selectedProject.githubUrl && (
                 <a
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-on-surface text-surface px-6 py-3.5 font-label-sm text-label-sm uppercase tracking-widest hover:bg-tertiary transition-colors font-bold w-full justify-center"
+                  className="inline-flex items-center gap-2 bg-on-surface text-surface px-6 py-3.5 font-label-sm text-label-sm uppercase tracking-widest hover:bg-tertiary transition-colors font-bold flex-1 justify-center"
                 >
-                  <Github size={16} /> View GitHub Repository
-                  <ExternalLink size={14} />
+                  <Github size={16} /> View GitHub Repo <ExternalLink size={14} />
                 </a>
-              </div>
-            )}
+              )}
+              {selectedProject.linkedInUrl && (
+                <a
+                  href={selectedProject.linkedInUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-tertiary text-white px-6 py-3.5 font-label-sm text-label-sm uppercase tracking-widest hover:opacity-90 transition-opacity font-bold flex-1 justify-center"
+                >
+                  <Linkedin size={16} /> View LinkedIn Post <ExternalLink size={14} />
+                </a>
+              )}
+            </div>
 
             {/* Tech Tags */}
             <div>
