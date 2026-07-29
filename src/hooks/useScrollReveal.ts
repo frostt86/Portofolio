@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 export function useScrollReveal() {
   const ref = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  const observe = useCallback(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -13,16 +13,32 @@ export function useScrollReveal() {
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '-50px',
+        threshold: 0.08,
+        rootMargin: '-30px',
       }
     );
 
-    const elements = document.querySelectorAll('.scroll-reveal');
-    elements.forEach((element) => observer.observe(element));
+    // Observe all scroll-reveal variants
+    const selectors = [
+      '.scroll-reveal',
+      '.scroll-reveal-left',
+      '.scroll-reveal-right',
+      '.scroll-reveal-scale',
+      '.stagger-children',
+    ];
+
+    selectors.forEach((selector) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach((element) => observer.observe(element));
+    });
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const cleanup = observe();
+    return cleanup;
+  }, [observe]);
 
   return ref;
 }

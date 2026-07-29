@@ -3,220 +3,125 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 const technicalSkills = [
   {
     name: 'Spring Boot',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg',
   },
   {
     name: 'Angular',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg',
   },
   {
     name: 'Solidity',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/solidity/solidity-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/solidity/solidity-original.svg',
   },
   {
     name: 'SQL',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
   },
   {
     name: 'Python',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
   },
   {
     name: 'React',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
   },
   {
     name: 'Boomi',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Boomi-logo.svg'
+    icon: '',
   },
   {
     name: 'Elasticsearch',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/elasticsearch/elasticsearch-original.svg'
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/elasticsearch/elasticsearch-original.svg',
   },
   {
     name: 'NoSQL',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg'
-  }
+    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
+  },
 ];
 
-const skills = {
-  soft: [
-    'Problem Solving',
-    'Project Management',
-    'Teamwork',
-    'Leadership',
-    'Adaptability',
-    'Communication',
-  ]
-};
+const softSkills = [
+  { name: 'Problem Solving', icon: '🧩' },
+  { name: 'Project Management', icon: '📋' },
+  { name: 'Teamwork', icon: '🤝' },
+  { name: 'Leadership', icon: '🎯' },
+  { name: 'Adaptability', icon: '🔄' },
+  { name: 'Communication', icon: '💬' },
+];
 
 export default function Skills() {
   const ref = useScrollReveal();
 
   return (
-      <section ref={ref} id="skills" className="py-16 sm:py-20 relative scroll-reveal">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold gradient-text mb-8 sm:mb-12 font-poppins text-center">Skills</h2>
+    <section ref={ref} id="skills" className="py-24 relative">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-16 scroll-reveal">
+          <h2 className="text-4xl sm:text-5xl font-bold font-outfit gradient-text section-heading">
+            Skills
+          </h2>
+        </div>
 
-          <div className="space-y-12 sm:space-y-16">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-200 mb-6 sm:mb-8 text-center">Technical Skills</h3>
+        {/* Technical Skills - Hex Grid */}
+        <div className="mb-20">
+          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-10 font-outfit"
+              style={{ color: 'var(--color-neon-cyan)' }}>
+            Technical Skills
+          </h3>
 
-              {/* Technical Skills - Animated Horizontal Carousel */}
-              <div className="relative overflow-hidden">
-                <div className="flex animate-scroll space-x-8">
-                  {/* First set of skills */}
-                  {technicalSkills.map((skill, index) => (
-                      <div
-                          key={`first-${index}`}
-                          className="group relative bg-gradient-to-br from-purple-900/40 to-purple-800/20
-                             p-6 rounded-xl backdrop-blur-sm border border-purple-700/30
-                             hover:border-purple-500/50 transition-all duration-500
-                             hover:shadow-xl hover:shadow-purple-500/20 transform hover:-translate-y-2
-                             hover:from-purple-800/50 hover:to-purple-700/30 flex-shrink-0 min-w-[200px]"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10
-                                  rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                        <div className="relative z-10 text-center">
-                          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500/20 to-purple-700/20
-                                    rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm
-                                    border border-purple-600/30 group-hover:border-purple-400/50 transition-all duration-300">
-                            <img
-                                src={skill.icon}
-                                alt={skill.name}
-                                className="w-10 h-10 object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
-                                onError={(e) => {
-                                  // Try alternative URLs for Boomi
-                                  if (skill.name === 'Boomi') {
-                                    const alternatives = [
-                                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Boomi-logo.svg/512px-Boomi-logo.svg.png',
-                                      'https://companieslogo.com/img/orig/BOOMI_BIG.D-6c3c7a66.png',
-                                      'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9IiM2MzY2RjEiLz48dGV4dCB4PSI1MCIgeT0iNTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCI+QjwvdGV4dD48L3N2Zz4='
-                                    ];
-
-                                    if (e.target.dataset.attemptCount) {
-                                      const attempt = parseInt(e.target.dataset.attemptCount);
-                                      if (attempt < alternatives.length) {
-                                        e.target.src = alternatives[attempt];
-                                        e.target.dataset.attemptCount = attempt + 1;
-                                        return;
-                                      }
-                                    } else if (e.target.src !== alternatives[0]) {
-                                      e.target.src = alternatives[0];
-                                      e.target.dataset.attemptCount = "1";
-                                      return;
-                                    }
-                                  }
-
-                                  // Final fallback: hide image and show letter
-                                  e.target.style.display = 'none';
-                                  e.target.nextSibling.style.display = 'flex';
-                                }}
-                            />
-                            <div className="w-8 h-8 bg-purple-500/40 rounded-full hidden items-center justify-center">
-                              <span className="text-white font-bold text-sm">{skill.name.charAt(0)}</span>
-                            </div>
-                          </div>
-                          <h4 className="text-lg font-semibold text-white group-hover:text-purple-200
-                                   transition-colors duration-300">{skill.name}</h4>
-                        </div>
-
-                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2
-                                  w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500
-                                  group-hover:w-3/4 transition-all duration-500"></div>
-                      </div>
-                  ))}
-
-                  {/* Duplicate set for seamless loop */}
-                  {technicalSkills.map((skill, index) => (
-                      <div
-                          key={`second-${index}`}
-                          className="group relative bg-gradient-to-br from-purple-900/40 to-purple-800/20
-                             p-6 rounded-xl backdrop-blur-sm border border-purple-700/30
-                             hover:border-purple-500/50 transition-all duration-500
-                             hover:shadow-xl hover:shadow-purple-500/20 transform hover:-translate-y-2
-                             hover:from-purple-800/50 hover:to-purple-700/30 flex-shrink-0 min-w-[200px]"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10
-                                  rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                        <div className="relative z-10 text-center">
-                          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500/20 to-purple-700/20
-                                    rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm
-                                    border border-purple-600/30 group-hover:border-purple-400/50 transition-all duration-300">
-                            <img
-                                src={skill.icon}
-                                alt={skill.name}
-                                className="w-10 h-10 object-contain filter group-hover:drop-shadow-lg transition-all duration-300"
-                                onError={(e) => {
-                                  e.target.style.display = 'none';
-                                  e.target.nextSibling.style.display = 'flex';
-                                }}
-                            />
-                            <div className="w-8 h-8 bg-purple-500/40 rounded-full hidden items-center justify-center">
-                              <span className="text-white font-bold text-sm">{skill.name.charAt(0)}</span>
-                            </div>
-                          </div>
-                          <h4 className="text-lg font-semibold text-white group-hover:text-purple-200
-                                   transition-colors duration-300">{skill.name}</h4>
-                        </div>
-
-                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2
-                                  w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500
-                                  group-hover:w-3/4 transition-all duration-500"></div>
-                      </div>
-                  ))}
+          <div className="hex-grid stagger-children scroll-reveal">
+            {technicalSkills.map((skill, index) => (
+              <div key={index} className="hex-item group">
+                {skill.icon ? (
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                ) : null}
+                <div
+                  className={`w-12 h-12 rounded-xl items-center justify-center text-xl font-bold ${skill.icon ? 'hidden' : 'flex'}`}
+                  style={{
+                    background: 'rgba(0, 240, 255, 0.1)',
+                    color: 'var(--color-neon-cyan)',
+                  }}
+                >
+                  {skill.name.charAt(0)}
                 </div>
+                <span className="text-sm font-semibold text-gray-300 group-hover:text-white transition-colors font-inter text-center">
+                  {skill.name}
+                </span>
               </div>
-
-              <style jsx>{`
-                @keyframes scroll {
-                  0% { transform: translateX(0); }
-                  100% { transform: translateX(-50%); }
-                }
-
-                .animate-scroll {
-                  animation: scroll 20s linear infinite;
-                  will-change: transform;
-                }
-
-                .animate-scroll:hover {
-                  animation-play-state: paused;
-                }
-
-                /* Ensure smooth infinite loop */
-                .animate-scroll {
-                  display: flex;
-                  width: calc(200px * 18 + 8px * 17); /* 9 items * 2 sets * (width + gap) */
-                }
-              `}</style>
-            </div>
-
-            <div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-200 mb-6 sm:mb-8 text-center">Soft Skills</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {skills.soft.map((skill, index) => (
-                    <div
-                        key={index}
-                        className="group px-6 py-4 bg-gradient-to-r from-gray-900/60 to-gray-800/40
-                           rounded-lg text-gray-300 transition-all duration-300
-                           border border-gray-700/50 hover:border-purple-500/50
-                           backdrop-blur-sm hover:text-white hover:from-purple-900/40
-                           hover:to-purple-800/30 hover:scale-105 transform text-sm sm:text-base
-                           hover:shadow-md hover:shadow-purple-500/10 cursor-pointer
-                           text-center relative overflow-hidden"
-                    >
-                      <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r
-                                from-purple-500 to-pink-500 group-hover:w-full
-                                transition-all duration-500"></div>
-                      <span className="relative z-10">{skill}</span>
-                    </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
+
+        {/* Soft Skills */}
+        <div>
+          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-10 font-outfit"
+              style={{ color: 'var(--color-neon-violet)' }}>
+            Soft Skills
+          </h3>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-3xl mx-auto stagger-children scroll-reveal">
+            {softSkills.map((skill, index) => (
+              <div
+                key={index}
+                className="glass-card p-5 text-center cursor-pointer group"
+              >
+                <div className="relative z-10">
+                  <span className="text-2xl mb-2 block">{skill.icon}</span>
+                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors font-inter">
+                    {skill.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
