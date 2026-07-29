@@ -19,86 +19,67 @@ export default function About() {
         
         {/* Section Heading */}
         <div className="text-center mb-16 scroll-reveal">
-          <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white uppercase tracking-tight section-heading-mono">
-            About Me
-          </h2>
-          <p className="text-sm font-mono text-neutral-400 mt-4 uppercase tracking-widest">
-            // Profile & Executive Summary
+          <h2 className="section-title">About Me</h2>
+          <p className="text-sm font-mono text-neutral-400 mt-2">
+            Integration Consultant & Full-Stack Developer
           </p>
         </div>
 
-        {/* Executive Bio Card */}
-        <div className="hud-card hud-corner-notches p-8 sm:p-10 mb-16 scroll-reveal">
-          <div className="flex items-start gap-4">
-            <div className="hidden sm:flex shrink-0 w-12 h-12 rounded-lg bg-white/10 border border-white/20 items-center justify-center text-white">
-              <Terminal size={22} />
-            </div>
-            <div className="space-y-4">
-              <p className="text-neutral-200 text-lg leading-relaxed font-inter">
-                Boomi-certified Integration Consultant specializing in enterprise automation, API integrations, and monitoring solutions.
-                At Yenlo, built 5 production automation suites and 7 migration processes that replaced hours of manual work with minutes of automated processing across managed customer environments.
-              </p>
-              <p className="text-neutral-400 text-base leading-relaxed font-inter">
-                Software Engineering undergraduate at the University of Westminster with 17 Boomi certifications and an InnoServ Awards 2025 win for an award-winning health-tech wearable.
-              </p>
-            </div>
-          </div>
+        {/* Executive Summary Card */}
+        <div className="mini-card p-8 mb-14 scroll-reveal">
+          <p className="text-neutral-200 text-base sm:text-lg leading-relaxed font-inter mb-4">
+            Boomi-certified Integration Consultant specializing in enterprise automation, API integrations, and monitoring solutions.
+            At Yenlo, built 5 production automation suites and 7 migration processes that replaced hours of manual work with minutes of automated processing across managed customer environments.
+          </p>
+          <p className="text-neutral-400 text-sm leading-relaxed font-inter">
+            Software Engineering undergraduate at the University of Westminster with 17 Boomi certifications and an InnoServ Awards 2025 win for an award-winning health-tech wearable.
+          </p>
         </div>
 
-        {/* Core Competencies Grid */}
+        {/* Competencies */}
         <div className="mb-16 scroll-reveal">
-          <h3 className="text-xl font-bold font-outfit text-white uppercase tracking-wider mb-6 text-center">
+          <h3 className="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-6 text-center">
             Core Competencies
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {coreCompetencies.map((item, idx) => (
-              <div key={idx} className="hud-card p-4 flex items-center gap-3 border-neutral-800 hover:border-neutral-500">
-                <CheckCircle2 size={16} className="text-white shrink-0" />
-                <span className="text-xs font-mono text-neutral-200 font-semibold">{item}</span>
+              <div key={idx} className="mini-card p-3.5 flex items-center gap-2.5 text-xs font-inter text-neutral-200">
+                <CheckCircle2 size={15} className="text-cyan-400 shrink-0" />
+                <span>{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Experience & Education Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Experience & Education */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           
           {/* Experience */}
           <div className="scroll-reveal-left">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-md bg-white text-black flex items-center justify-center font-bold">
-                <Briefcase size={20} />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold font-outfit text-white uppercase">Work Experience</h3>
-                <p className="text-xs font-mono text-neutral-400">Production & Industry Roles</p>
-              </div>
+            <div className="flex items-center gap-2.5 mb-6">
+              <Briefcase size={18} className="text-cyan-400" />
+              <h3 className="text-xl font-bold font-outfit text-white">Work Experience</h3>
             </div>
 
-            <div className="timeline-mono">
-              <div className="timeline-mono-item">
-                <div className="hud-card p-6">
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="text-xl font-bold text-white font-outfit">Yenlo</h4>
-                    <span className="badge-mono badge-mono-highlight">2025 – 2026.08</span>
-                  </div>
-                  <p className="text-sm font-mono font-semibold text-neutral-300 mb-3">
-                    Boomi Integration Consultant
-                  </p>
-                  <p className="text-xs font-inter text-neutral-400 leading-relaxed mb-4">
-                    Built 5 production automation suites and 7 migration processes replacing manual work across managed customer environments with automated processing.
-                  </p>
+            <div className="mini-card p-6">
+              <div className="flex items-start justify-between mb-2">
+                <h4 className="text-lg font-bold text-white font-outfit">Yenlo</h4>
+                <span className="tag-emerald">2025 – 2026.08</span>
+              </div>
+              <p className="text-xs font-mono text-cyan-400 font-semibold mb-3">
+                Boomi Integration Consultant
+              </p>
+              <p className="text-xs text-neutral-300 leading-relaxed mb-4">
+                Built 5 production automation suites and 7 migration processes replacing manual work across managed customer environments with automated processing.
+              </p>
 
-                  <div className="pt-3 border-t border-neutral-800">
-                    <div className="text-xs font-mono text-neutral-400 mb-2">Key Technologies:</div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {['Dell Boomi AtomSphere', 'Boomi Flow', 'DataHub', 'API Management', 'REST APIs', 'PostgreSQL', 'Java', 'Docker', 'Claude Code'].map((tech, i) => (
-                        <span key={i} className="badge-mono text-[10px]">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+              <div className="pt-3 border-t border-neutral-800">
+                <div className="flex flex-wrap gap-1.5">
+                  {['Dell Boomi AtomSphere', 'Boomi Flow', 'DataHub', 'API Management', 'REST APIs', 'PostgreSQL', 'Java', 'Docker'].map((tech, i) => (
+                    <span key={i} className="tag-neutral text-[10px]">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -106,46 +87,37 @@ export default function About() {
 
           {/* Education */}
           <div className="scroll-reveal-right">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-md bg-white text-black flex items-center justify-center font-bold">
-                <GraduationCap size={20} />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold font-outfit text-white uppercase">Education</h3>
-                <p className="text-xs font-mono text-neutral-400">Academic Background</p>
-              </div>
+            <div className="flex items-center gap-2.5 mb-6">
+              <GraduationCap size={18} className="text-violet-400" />
+              <h3 className="text-xl font-bold font-outfit text-white">Education</h3>
             </div>
 
-            <div className="timeline-mono space-y-6">
-              <div className="timeline-mono-item">
-                <div className="hud-card p-6">
-                  <div className="flex items-start justify-between mb-1">
-                    <h4 className="text-lg font-bold text-white font-outfit">
-                      University of Westminster
-                    </h4>
-                    <span className="badge-mono">2023 – 2027</span>
-                  </div>
-                  <p className="text-sm font-mono text-neutral-300 font-semibold mb-2">
-                    BSc (Hons) in Software Engineering (Reading)
-                  </p>
-                  <p className="text-xs font-inter text-neutral-400">
-                    Focused on full-stack software development, distributed systems, enterprise software, and software architecture.
-                  </p>
+            <div className="space-y-4">
+              <div className="mini-card p-6">
+                <div className="flex items-start justify-between mb-1">
+                  <h4 className="text-base font-bold text-white font-outfit">
+                    University of Westminster
+                  </h4>
+                  <span className="tag-neutral text-[10px]">2023 – 2027</span>
                 </div>
+                <p className="text-xs font-mono text-neutral-300 font-semibold mb-2">
+                  BSc (Hons) in Software Engineering (Reading)
+                </p>
+                <p className="text-xs text-neutral-400">
+                  Full-stack software engineering, enterprise integration, and system design.
+                </p>
               </div>
 
-              <div className="timeline-mono-item">
-                <div className="hud-card p-6">
-                  <div className="flex items-start justify-between mb-1">
-                    <h4 className="text-lg font-bold text-white font-outfit">
-                      St. Peter’s College
-                    </h4>
-                    <span className="badge-mono">2013 – 2021</span>
-                  </div>
-                  <p className="text-xs font-inter text-neutral-400">
-                    Primary & Secondary Education.
-                  </p>
+              <div className="mini-card p-6">
+                <div className="flex items-start justify-between mb-1">
+                  <h4 className="text-base font-bold text-white font-outfit">
+                    St. Peter’s College
+                  </h4>
+                  <span className="tag-neutral text-[10px]">2013 – 2021</span>
                 </div>
+                <p className="text-xs text-neutral-400">
+                  Primary & Secondary Education.
+                </p>
               </div>
             </div>
           </div>

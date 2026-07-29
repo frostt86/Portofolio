@@ -49,35 +49,33 @@ export default function Certifications() {
         
         {/* Heading */}
         <div className="text-center mb-16 scroll-reveal">
-          <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white uppercase tracking-tight section-heading-mono">
-            Certifications & Awards
-          </h2>
-          <p className="text-sm font-mono text-neutral-400 mt-4 uppercase tracking-widest">
-            // Verified Professional Credentials & Competition Achievements
+          <h2 className="section-title">Certifications & Awards</h2>
+          <p className="text-sm font-mono text-neutral-400 mt-2">
+            Professional credentials & competition achievements
           </p>
         </div>
 
         {/* Featured Awards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 scroll-reveal">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 scroll-reveal">
           {awardsAndKeyCerts.map((item, idx) => {
             const IconComp = item.icon;
             return (
-              <div key={idx} className="hud-card hud-corner-notches p-6 border-white/30 bg-neutral-900/90">
+              <div key={idx} className="mini-card p-6">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-white text-black font-bold shrink-0">
-                    <IconComp size={22} />
+                  <div className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-cyan-400 shrink-0">
+                    <IconComp size={20} />
                   </div>
                   <div>
-                    <span className="badge-mono badge-mono-highlight text-[10px] mb-2 inline-block">
+                    <span className="tag-cyan text-[10px] mb-2 inline-flex">
                       {item.category}
                     </span>
-                    <h3 className="text-xl font-bold font-outfit text-white mb-1">
+                    <h3 className="text-lg font-bold font-outfit text-white mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-sm font-mono text-neutral-300 font-semibold mb-2">
+                    <p className="text-xs font-mono text-neutral-300 font-semibold mb-2">
                       {item.subtitle}
                     </p>
-                    <p className="text-xs font-inter text-neutral-400 leading-relaxed">
+                    <p className="text-xs text-neutral-400 leading-relaxed">
                       {item.detail}
                     </p>
                   </div>
@@ -88,66 +86,60 @@ export default function Certifications() {
         </div>
 
         {/* Credentials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 stagger-children scroll-reveal">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 stagger-children scroll-reveal">
           
           {/* Boomi Professional */}
-          <div className="hud-card p-6 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-neutral-800">
-                <ShieldCheck size={20} className="text-white" />
-                <h3 className="text-base font-bold font-outfit text-white uppercase">
-                  Boomi – Professional Level
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {boomiProfessional.map((cert, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs font-mono text-neutral-300">
-                    <CheckCircle2 size={14} className="text-white shrink-0 mt-0.5" />
-                    <span>{cert}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="mini-card p-6">
+            <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-neutral-800">
+              <ShieldCheck size={18} className="text-cyan-400" />
+              <h3 className="text-base font-bold font-outfit text-white">
+                Boomi – Professional
+              </h3>
             </div>
+            <ul className="space-y-2.5">
+              {boomiProfessional.map((cert, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                  <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{cert}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Boomi Associate */}
-          <div className="hud-card p-6 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-neutral-800">
-                <ShieldCheck size={20} className="text-white" />
-                <h3 className="text-base font-bold font-outfit text-white uppercase">
-                  Boomi – Associate Level
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {boomiAssociate.map((cert, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs font-mono text-neutral-300">
-                    <CheckCircle2 size={14} className="text-white shrink-0 mt-0.5" />
-                    <span>{cert}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="mini-card p-6">
+            <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-neutral-800">
+              <ShieldCheck size={18} className="text-violet-400" />
+              <h3 className="text-base font-bold font-outfit text-white">
+                Boomi – Associate
+              </h3>
             </div>
+            <ul className="space-y-2.5">
+              {boomiAssociate.map((cert, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                  <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{cert}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Anthropic AI Tooling */}
-          <div className="hud-card p-6 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-neutral-800">
-                <Terminal size={20} className="text-white" />
-                <h3 className="text-base font-bold font-outfit text-white uppercase">
-                  Anthropic – AI Tooling
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {anthropicAiTooling.map((cert, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs font-mono text-neutral-300">
-                    <CheckCircle2 size={14} className="text-white shrink-0 mt-0.5" />
-                    <span>{cert}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="mini-card p-6">
+            <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-neutral-800">
+              <Terminal size={18} className="text-cyan-400" />
+              <h3 className="text-base font-bold font-outfit text-white">
+                Anthropic – AI Tooling
+              </h3>
             </div>
+            <ul className="space-y-2.5">
+              {anthropicAiTooling.map((cert, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
+                  <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{cert}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
         </div>

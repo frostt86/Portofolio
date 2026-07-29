@@ -1,47 +1,31 @@
-import { Mail, Phone, MapPin, Linkedin, Send, UserCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Send } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const contactDetails = [
   {
     icon: Mail,
-    label: 'Email Address',
+    label: 'Email',
     value: 'jkularatn@gmail.com',
     href: 'mailto:jkularatn@gmail.com',
   },
   {
     icon: Phone,
-    label: 'Phone Number',
+    label: 'Phone',
     value: '+94 (70) 159 4530',
     href: 'tel:+94701594530',
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: '370/33, Thekkawatta, Panadura',
+    value: 'Panadura, Sri Lanka',
     href: '#',
   },
   {
     icon: Linkedin,
-    label: 'LinkedIn Profile',
+    label: 'LinkedIn',
     value: 'linkedin.com/in/pamitha-kularathne-ba2b06295',
     href: 'https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/',
     external: true,
-  },
-];
-
-const references = [
-  {
-    name: 'Vindula Athukorala',
-    title: 'Senior Managed Service Engineer',
-    company: 'Yenlo',
-    email: 'vindula.athukorala@yenlo.com',
-    phone: '+94 77 721 8773',
-  },
-  {
-    name: 'Ruwan Mohandiram',
-    title: 'Owner & CEO',
-    company: 'Finco Tech',
-    phone: '+94 77 364 7596',
   },
 ];
 
@@ -50,25 +34,23 @@ export default function Contact() {
 
   return (
     <section ref={ref} id="contact" className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         
         {/* Heading */}
         <div className="text-center mb-16 scroll-reveal">
-          <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white uppercase tracking-tight section-heading-mono">
-            Get In Touch
-          </h2>
-          <p className="text-sm font-mono text-neutral-400 mt-4 uppercase tracking-widest">
-            // Direct Contact Channels & References
+          <h2 className="section-title">Get In Touch</h2>
+          <p className="text-sm font-mono text-neutral-400 mt-2">
+            Let's discuss enterprise integrations, full-stack projects, or new opportunities
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           
-          {/* Contact Details */}
+          {/* Contact Information */}
           <div className="space-y-4 scroll-reveal-left">
-            <h3 className="text-xl font-bold font-outfit text-white uppercase mb-6">
-              Contact Information
-            </h3>
+            <p className="text-neutral-300 text-sm leading-relaxed mb-6">
+              I am open to enterprise integration consulting, custom web development projects, and architectural collaborations. Feel free to connect directly through any of the channels below.
+            </p>
 
             {contactDetails.map((item, idx) => {
               const IconComp = item.icon;
@@ -78,16 +60,16 @@ export default function Contact() {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="hud-card p-4 flex items-center gap-4 group cursor-pointer block hover:border-white/50"
+                  className="mini-card p-4 flex items-center gap-4 group cursor-pointer block"
                 >
-                  <div className="p-3 rounded-md bg-white/10 text-white border border-white/20 group-hover:bg-white group-hover:text-black transition-colors">
+                  <div className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-300 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-colors">
                     <IconComp size={18} />
                   </div>
                   <div>
-                    <div className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
+                    <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">
                       {item.label}
                     </div>
-                    <div className="text-sm font-bold font-outfit text-white group-hover:text-neutral-200">
+                    <div className="text-sm font-semibold font-outfit text-white group-hover:text-cyan-400 transition-colors">
                       {item.value}
                     </div>
                   </div>
@@ -96,87 +78,59 @@ export default function Contact() {
             })}
           </div>
 
-          {/* Form */}
+          {/* Contact Form */}
           <div className="scroll-reveal-right">
             <form
-              className="hud-card hud-corner-notches p-8 space-y-4"
+              className="mini-card p-6 sm:p-8 space-y-4"
               onSubmit={(e) => e.preventDefault()}
             >
-              <h3 className="text-xl font-bold font-outfit text-white uppercase mb-4">
-                Send Direct Message
+              <h3 className="text-lg font-bold font-outfit text-white mb-2">
+                Send a Message
               </h3>
 
               <div>
-                <label htmlFor="mono-name" className="block text-xs font-mono text-neutral-400 uppercase mb-2">
-                  Your Name
+                <label htmlFor="minimal-name" className="block text-xs font-mono text-neutral-400 mb-1.5">
+                  Name
                 </label>
                 <input
                   type="text"
-                  id="mono-name"
-                  className="input-mono"
-                  placeholder="Enter your name"
+                  id="minimal-name"
+                  className="input-minimal"
+                  placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="mono-email" className="block text-xs font-mono text-neutral-400 uppercase mb-2">
-                  Email Address
+                <label htmlFor="minimal-email" className="block text-xs font-mono text-neutral-400 mb-1.5">
+                  Email
                 </label>
                 <input
                   type="email"
-                  id="mono-email"
-                  className="input-mono"
-                  placeholder="name@example.com"
+                  id="minimal-email"
+                  className="input-minimal"
+                  placeholder="your@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="mono-message" className="block text-xs font-mono text-neutral-400 uppercase mb-2">
+                <label htmlFor="minimal-message" className="block text-xs font-mono text-neutral-400 mb-1.5">
                   Message
                 </label>
                 <textarea
-                  id="mono-message"
+                  id="minimal-message"
                   rows={4}
-                  className="input-mono resize-none"
-                  placeholder="Write your message here..."
+                  className="input-minimal resize-none"
+                  placeholder="Write your message..."
                 />
               </div>
 
-              <button type="submit" className="btn-mono-solid w-full mt-2">
-                <Send size={14} />
+              <button type="submit" className="btn-primary w-full justify-center">
+                <Send size={15} />
                 Send Message
               </button>
             </form>
           </div>
 
-        </div>
-
-        {/* References Section */}
-        <div className="scroll-reveal">
-          <div className="flex items-center gap-3 mb-6">
-            <UserCheck size={20} className="text-white" />
-            <h3 className="text-xl font-bold font-outfit text-white uppercase">
-              Professional References
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {references.map((refItem, idx) => (
-              <div key={idx} className="hud-card p-6 border-neutral-800">
-                <h4 className="text-lg font-bold font-outfit text-white">
-                  {refItem.name}
-                </h4>
-                <p className="text-xs font-mono text-neutral-300 font-semibold mt-0.5">
-                  {refItem.title} – {refItem.company}
-                </p>
-
-                <div className="mt-4 pt-3 border-t border-neutral-800 space-y-1 font-mono text-xs text-neutral-400">
-                  {refItem.email && <div>Email: {refItem.email}</div>}
-                  <div>Phone: {refItem.phone}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>
