@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Github, X, Image as ImageIcon, Globe } from 'lucide-react';
+import { X, ExternalLink, Github, Image as ImageIcon } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export interface Project {
@@ -8,12 +8,13 @@ export interface Project {
   year: string;
   role: string;
   category: string;
+  colSpanClass: string;
+  aspectRatioClass: string;
   githubUrl?: string;
   imageSrc?: string;
   technologies: string[];
   summary: string;
   highlights: string[];
-  tagColor?: 'cyan' | 'emerald' | 'violet' | 'rose';
 }
 
 const projectsData: Project[] = [
@@ -22,16 +23,17 @@ const projectsData: Project[] = [
     title: 'JCK Visionary Build',
     year: '2025',
     role: 'Creator & Lead Developer',
-    category: 'Web Application',
+    category: 'Web Application • Architecture Showcase',
+    colSpanClass: 'md:col-span-8',
+    aspectRatioClass: 'aspect-[16/9]',
     githubUrl: 'https://github.com/frostt86/jck-visionary-build',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'cyan',
+    imageSrc: '',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Frontend Architecture'],
     summary: 'A modern, high-performance web application designed for interactive visual showcases and dynamic project builds with ultra-responsive UX.',
     highlights: [
       'Engineered responsive web interface with custom styling and smooth animation transitions.',
       'Implemented clean modular component architecture for maintainability and scalability.',
-      'Hosted and open-sourced on GitHub repository.',
+      'Source code hosted and open-sourced on GitHub repository.',
     ],
   },
   {
@@ -39,16 +41,17 @@ const projectsData: Project[] = [
     title: 'Graundier',
     year: '2025',
     role: 'Creator & Lead Developer',
-    category: 'Web Application',
+    category: 'Web Platform • Digital Product',
+    colSpanClass: 'md:col-span-4',
+    aspectRatioClass: 'aspect-square',
     githubUrl: 'https://github.com/frostt86/Graundier',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'emerald',
+    imageSrc: '',
     technologies: ['Full-Stack', 'JavaScript / TypeScript', 'Web Platform', 'UI/UX Design'],
     summary: 'A sleek web platform built to streamline interactive workflows and deliver a minimalist, high-impact user experience.',
     highlights: [
       'Designed and developed full-stack features with clean data handling and fast response times.',
       'Optimized layout for cross-device compatibility and dark mode design standards.',
-      'Source code hosted publicly on GitHub.',
+      'Hosted publicly on GitHub.',
     ],
   },
   {
@@ -56,9 +59,10 @@ const projectsData: Project[] = [
     title: 'Boomi Customer Environment Monitoring Suite',
     year: '2025',
     role: 'Boomi Integration Consultant',
-    category: 'Enterprise Automation',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'cyan',
+    category: 'Enterprise Automation • Monitoring',
+    colSpanClass: 'md:col-span-6',
+    aspectRatioClass: 'aspect-[4/3]',
+    imageSrc: '',
     technologies: [
       'Dell Boomi',
       'Boomi Partner API',
@@ -70,7 +74,7 @@ const projectsData: Project[] = [
       'Java',
       'Environment Extensions',
     ],
-    summary: 'Designed and developed 5 enterprise Boomi automations replacing manual monitoring across all SLA customer environments within 7 months.',
+    summary: 'Designed, developed, and maintained a suite of 5 enterprise Boomi automations replacing manual monitoring across all SLA customer environments within 7 months.',
     highlights: [
       'Monitored SSL/TLS cert health, connector inventory, consultant activity, Java compliance, and license usage.',
       'Published centralized Confluence dashboards via REST API & sent MS Teams Adaptive Card alerts.',
@@ -81,10 +85,11 @@ const projectsData: Project[] = [
     id: 'banking-api-platform',
     title: 'Enterprise Banking API Platform',
     year: '2025',
-    role: 'Backend Architect',
-    category: 'Backend Platform',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'violet',
+    role: 'Backend Architect & Developer',
+    category: 'Backend Architecture • Security',
+    colSpanClass: 'md:col-span-6',
+    aspectRatioClass: 'aspect-[4/3]',
+    imageSrc: '',
     technologies: [
       'Java 26',
       'Spring Boot 3.5',
@@ -105,12 +110,13 @@ const projectsData: Project[] = [
   },
   {
     id: 'pipedrive-datacore',
-    title: 'Data Core – Pipedrive Integration',
+    title: 'Data Core – Pipedrive Platform Integration',
     year: '2025',
     role: 'Integration Specialist',
-    category: 'Data Platform',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'emerald',
+    category: 'Data Platform • BI Reporting',
+    colSpanClass: 'md:col-span-4',
+    aspectRatioClass: 'aspect-[3/4]',
+    imageSrc: '',
     technologies: [
       'Dell Boomi',
       'Pipedrive REST API',
@@ -132,9 +138,10 @@ const projectsData: Project[] = [
     title: 'Questionnaire-to-CRM Marketing Automation',
     year: '2025',
     role: 'Integration Consultant',
-    category: 'Process Automation',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'violet',
+    category: 'Process Automation • CRM',
+    colSpanClass: 'md:col-span-8',
+    aspectRatioClass: 'aspect-[16/9]',
+    imageSrc: '',
     technologies: [
       'Dell Boomi',
       'Boomi Flow Services',
@@ -154,9 +161,10 @@ const projectsData: Project[] = [
     title: 'BlockBallot – Electronic Voting System',
     year: '2025',
     role: 'Project Leader & Full-Stack Developer',
-    category: 'Blockchain & Web3',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'cyan',
+    category: 'Blockchain & Web3 • Smart Contracts',
+    colSpanClass: 'md:col-span-6',
+    aspectRatioClass: 'aspect-[4/3]',
+    imageSrc: '',
     technologies: [
       'Java',
       'Spring Boot',
@@ -177,10 +185,11 @@ const projectsData: Project[] = [
     id: 'novalith-smartbelt',
     title: 'Novalith Smart Pregnancy Belt',
     year: '2025',
-    role: 'Backend & Integration Lead',
-    category: 'InnoServ Award Winner 2025',
-    imageSrc: '', // Placeholder slot for user image
-    tagColor: 'rose',
+    role: 'Backend & API Integration Lead',
+    category: 'Winner - InnoServ Awards 2025 (Taiwan)',
+    colSpanClass: 'md:col-span-6',
+    aspectRatioClass: 'aspect-[4/3]',
+    imageSrc: '',
     technologies: [
       'Backend Development',
       'REST API Integration',
@@ -200,196 +209,170 @@ export default function Projects() {
   const ref = useScrollReveal();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const getTagStyle = (color?: string) => {
-    switch (color) {
-      case 'emerald': return 'tag-emerald';
-      case 'violet': return 'tag-violet';
-      case 'rose': return 'tag-cyan';
-      default: return 'tag-cyan';
-    }
-  };
-
   return (
-    <section ref={ref} id="projects" className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-4">
-        
-        {/* Section Heading */}
-        <div className="text-center mb-16 scroll-reveal">
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="text-sm font-mono text-neutral-400 mt-2">
-            Web applications, enterprise integration suites & award-winning solutions
-          </p>
+    <section ref={ref} id="projects" className="px-6 md:px-16 pb-[128px] max-w-[1280px] mx-auto pt-16">
+      
+      {/* Section Header */}
+      <div className="mb-12 border-b border-on-surface/15 pb-6 scroll-reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span className="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-2">
+            // Selected Work & Applications
+          </span>
+          <h2 className="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight font-extrabold">
+            PROJECT GALLERY
+          </h2>
         </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children scroll-reveal">
-          {projectsData.map((project) => (
-            <div
-              key={project.id}
-              className="mini-card p-6 flex flex-col justify-between group cursor-pointer"
-              onClick={() => setSelectedProject(project)}
-            >
-              <div>
-                {/* Image Container / Placeholder */}
-                <div className="img-container mb-4">
-                  {project.imageSrc ? (
-                    <img src={project.imageSrc} alt={project.title} />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center p-4 bg-neutral-900/60 text-neutral-500 group-hover:text-neutral-300 transition-colors">
-                      <ImageIcon size={32} className="mb-2 opacity-50" />
-                      <span className="text-[11px] font-mono uppercase tracking-wider">
-                        {project.category}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Card Title & Category Tag */}
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="text-lg font-bold font-outfit text-white group-hover:text-cyan-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className={getTagStyle(project.tagColor)}>
-                    {project.year}
-                  </span>
-                </div>
-
-                <p className="text-xs font-mono text-neutral-400 font-semibold mb-2">
-                  {project.role}
-                </p>
-
-                <p className="text-xs text-neutral-300 line-clamp-3 leading-relaxed mb-4">
-                  {project.summary}
-                </p>
-              </div>
-
-              <div>
-                {/* Tech Tags */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/60">
-                  {project.technologies.slice(0, 3).map((tech, idx) => (
-                    <span key={idx} className="tag-neutral text-[10px]">
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="tag-neutral text-[10px] text-neutral-400">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
-
-                {/* Footer Links */}
-                <div className="mt-4 flex items-center justify-between text-xs font-mono text-neutral-400 group-hover:text-white transition-colors">
-                  <span className="flex items-center gap-1">
-                    Details <ExternalLink size={12} />
-                  </span>
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-neutral-400 hover:text-cyan-400 p-1 flex items-center gap-1"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={14} />
-                      <span className="text-[11px]">GitHub</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <p className="font-body-md text-body-md text-on-surface-variant max-w-md">
+          A showcase of enterprise integration suites, full-stack web platforms, and award-winning hardware systems.
+        </p>
       </div>
 
-      {/* Detail Lightbox Modal */}
+      {/* STUDIO_X Bento-style Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 stagger-children scroll-reveal">
+        {projectsData.map((project) => (
+          <div
+            key={project.id}
+            className={`${project.colSpanClass} group project-card cursor-pointer`}
+            onClick={() => setSelectedProject(project)}
+          >
+            {/* Image Container with Grayscale-to-Color hover effect */}
+            <div className={`overflow-hidden ${project.aspectRatioClass} mb-4 bg-surface-container border border-on-surface/10 relative`}>
+              {project.imageSrc ? (
+                <img
+                  src={project.imageSrc}
+                  alt={project.title}
+                  className="project-image w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-surface-container-high text-on-surface-variant group-hover:text-on-surface transition-colors">
+                  <ImageIcon size={40} className="mb-3 opacity-40 group-hover:opacity-80 transition-opacity" />
+                  <span className="font-label-sm text-label-sm uppercase tracking-widest text-center">
+                    [{project.category}]
+                  </span>
+                  <span className="text-[11px] font-mono mt-1 text-outline">
+                    Click to view project specs
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Card Header & Title */}
+            <div className="flex items-center justify-between gap-4">
+              <h3 className="font-headline-md text-headline-md text-on-surface project-title transition-colors font-bold">
+                {project.title}
+              </h3>
+              <span className="px-2 py-1 bg-tertiary text-white font-label-sm text-[10px] rounded-none shrink-0 font-bold">
+                {project.year}
+              </span>
+            </div>
+
+            {/* Category Subtitle */}
+            <div className="flex items-center justify-between mt-1">
+              <p className="font-label-sm text-label-sm text-outline uppercase tracking-wider">
+                {project.category}
+              </p>
+              {project.githubUrl && (
+                <span className="font-label-sm text-[11px] text-tertiary uppercase tracking-widest flex items-center gap-1 font-bold">
+                  <Github size={12} /> GitHub Repo
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox Specification Modal */}
       {selectedProject && (
         <div
-          className="fixed inset-0 z-[300] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+          className="fixed inset-0 z-[300] bg-on-surface/80 backdrop-blur-md flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="mini-card max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 bg-neutral-950 border-neutral-700"
+            className="bg-surface border border-on-surface max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
-            <div className="flex items-start justify-between gap-4 mb-5 pb-4 border-b border-neutral-800">
+            {/* Modal Top Bar */}
+            <div className="flex items-start justify-between gap-4 mb-6 pb-4 border-b border-on-surface/20">
               <div>
-                <span className={`${getTagStyle(selectedProject.tagColor)} text-xs mb-2 inline-flex`}>
+                <span className="px-2 py-1 bg-tertiary text-white font-label-sm text-[10px] uppercase font-bold mb-2 inline-block">
                   {selectedProject.year} • {selectedProject.category}
                 </span>
-                <h3 className="text-2xl font-bold font-outfit text-white">
+                <h3 className="font-headline-lg text-[32px] font-bold text-on-surface uppercase tracking-tight">
                   {selectedProject.title}
                 </h3>
-                <p className="text-xs font-mono text-neutral-400 font-semibold mt-1">
+                <p className="font-label-sm text-label-sm text-outline uppercase tracking-wider mt-1">
                   {selectedProject.role}
                 </p>
               </div>
               <button
-                className="p-2 text-neutral-400 hover:text-white rounded-lg bg-neutral-900 border border-neutral-800"
+                className="p-2 text-on-surface hover:text-tertiary transition-colors"
                 onClick={() => setSelectedProject(null)}
               >
-                <X size={18} />
+                <X size={24} />
               </button>
             </div>
 
-            {/* Image Preview Box */}
-            <div className="img-container h-48 sm:h-60 mb-5">
+            {/* Image Box */}
+            <div className="overflow-hidden aspect-[16/9] mb-6 bg-surface-container border border-on-surface/10">
               {selectedProject.imageSrc ? (
-                <img src={selectedProject.imageSrc} alt={selectedProject.title} />
+                <img
+                  src={selectedProject.imageSrc}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center bg-neutral-900 text-neutral-500">
-                  <ImageIcon size={40} className="mb-2 opacity-50" />
-                  <span className="text-xs font-mono uppercase">
-                    Project Image Preview Slot
+                <div className="w-full h-full flex flex-col items-center justify-center bg-surface-container-high text-on-surface-variant p-6">
+                  <ImageIcon size={48} className="mb-2 opacity-50" />
+                  <span className="font-label-sm text-label-sm uppercase tracking-widest">
+                    Project Image Preview
                   </span>
                 </div>
               )}
             </div>
 
             {/* Summary */}
-            <p className="text-sm text-neutral-200 leading-relaxed mb-5">
+            <p className="font-body-lg text-body-lg text-on-surface-variant mb-6">
               {selectedProject.summary}
             </p>
 
             {/* Highlights */}
-            <div className="mb-5">
-              <h4 className="text-xs font-mono uppercase text-neutral-400 mb-2">
+            <div className="mb-6">
+              <h4 className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface mb-3 font-bold">
                 Key Contributions:
               </h4>
-              <ul className="space-y-1.5">
+              <ul className="space-y-2">
                 {selectedProject.highlights.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
-                    <span className="text-cyan-400">•</span>
+                  <li key={idx} className="flex items-start gap-2.5 font-body-md text-body-md text-on-surface-variant">
+                    <span className="text-tertiary font-bold">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* GitHub Link if available */}
+            {/* GitHub Repo Button */}
             {selectedProject.githubUrl && (
-              <div className="mb-5 pt-3 border-t border-neutral-800">
+              <div className="mb-6 pt-4 border-t border-on-surface/15">
                 <a
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary w-full justify-center text-xs"
+                  className="inline-flex items-center gap-2 bg-on-surface text-surface px-6 py-3.5 font-label-sm text-label-sm uppercase tracking-widest hover:bg-tertiary transition-colors font-bold w-full justify-center"
                 >
-                  <Github size={16} />
-                  View Repository on GitHub
+                  <Github size={16} /> View GitHub Repository
+                  <ExternalLink size={14} />
                 </a>
               </div>
             )}
 
-            {/* Technologies */}
+            {/* Tech Tags */}
             <div>
-              <h4 className="text-xs font-mono uppercase text-neutral-400 mb-2">
-                Technologies:
+              <h4 className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface mb-3 font-bold">
+                Technologies & Tools:
               </h4>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {selectedProject.technologies.map((tech, idx) => (
-                  <span key={idx} className="tag-neutral text-xs">
+                  <span key={idx} className="px-2.5 py-1 bg-surface-container text-on-surface font-mono text-xs border border-on-surface/10">
                     {tech}
                   </span>
                 ))}

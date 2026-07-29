@@ -1,5 +1,3 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
-import ParticleCanvas from './components/ParticleCanvas';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import About from './components/About';
@@ -13,68 +11,71 @@ function App() {
   useScrollReveal();
 
   return (
-    <div className="min-h-screen relative bg-black text-neutral-200">
-      {/* Background visual layers */}
-      <ParticleCanvas />
-      <div className="grid-bg-mono" />
-
-      {/* Floating Navbar */}
+    <div className="min-h-screen relative bg-surface text-on-surface font-geist selection:bg-tertiary selection:text-white">
+      {/* Top Navbar */}
       <Navbar />
 
-      {/* Main Sections */}
-      <main className="relative z-10 space-y-12">
+      {/* Main Content */}
+      <main className="mt-16">
         <Header />
-        <About />
         <Projects />
+        <About />
         <Skills />
         <Certifications />
         <Contact />
       </main>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-neutral-900 bg-black/90 py-12 px-4 mt-20">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-left">
-            <div className="text-lg font-bold font-outfit text-white uppercase tracking-wider">
-              Pamitha Kularathne
-            </div>
-            <div className="text-xs font-mono text-neutral-400 mt-1">
-              Boomi Integration Consultant & Software Engineer
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-white transition-all duration-300"
-              aria-label="GitHub Profile"
-            >
-              <Github size={18} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-white transition-all duration-300"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin size={18} />
-            </a>
-            <a
-              href="mailto:jkularatn@gmail.com"
-              className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-white transition-all duration-300"
-              aria-label="Email Contact"
-            >
-              <Mail size={18} />
-            </a>
-          </div>
+      {/* Global STUDIO_X Footer */}
+      <footer className="w-full py-16 px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-8 max-w-[1280px] mx-auto border-t border-on-surface dark:border-outline-variant">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="font-headline-md text-headline-md font-extrabold text-on-surface uppercase tracking-tighter hover:text-tertiary transition-colors"
+          >
+            PAMITHA_KULARATHNE
+          </a>
+          <p className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container">
+            © {new Date().getFullYear()} PAMITHA KULARATHNE. ALL RIGHTS RESERVED.
+          </p>
         </div>
 
-        <div className="max-w-6xl mx-auto mt-8 pt-6 border-t border-neutral-900 text-center text-xs font-mono text-neutral-500">
-          © {new Date().getFullYear()} Pamitha Kularathne. All rights reserved. High-contrast Cyber Minimalist Portfolio.
+        <div className="flex items-center gap-8">
+          <a
+            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300"
+            href="https://github.com/frostt86"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300"
+            href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300"
+            href="mailto:jkularatn@gmail.com"
+          >
+            Email
+          </a>
+          <a
+            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300 flex items-center"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            Back to Top <span className="material-symbols-outlined text-[14px] ml-1">arrow_upward</span>
+          </a>
         </div>
       </footer>
     </div>
