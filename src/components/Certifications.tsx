@@ -16,9 +16,9 @@ const awardsAndKeyCerts = [
     category: 'Academic Distinction',
   },
   {
-    title: 'Sherlock & WSO2 Innovation Competition',
-    subtitle: 'WSO2 & Sherlock Hackathon Teamwork',
-    detail: 'AI and integration teamwork challenge exploring WSO2 API architecture and intelligence.',
+    title: 'Sherlock & WSO2 Innovation Challenge',
+    subtitle: 'WSO2 & Sherlock Hackathon',
+    detail: 'AI and integration teamwork challenge exploring WSO2 API architecture.',
     category: 'Competition Feature',
     link: 'https://www.linkedin.com/posts/pamitha-kularathne-ba2b06295_sherlock-wso2-teamwork-activity-7309983470678654977-1e9Q?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc',
   },
@@ -50,104 +50,93 @@ export default function Certifications() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} id="certifications" className="px-6 md:px-16 py-16 md:py-24 max-w-[1280px] mx-auto border-t border-on-surface/15">
+    <section ref={ref} id="certifications" className="py-16 max-w-[760px] mx-auto px-4 border-t border-white/10">
       
-      {/* Heading */}
-      <div className="mb-12 scroll-reveal">
-        <span className="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-2">
-          // Verified Professional Credentials & Innovation Awards
-        </span>
-        <h2 className="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight font-extrabold">
-          CERTIFICATIONS & AWARDS
+      {/* Header */}
+      <div className="mb-8 scroll-reveal">
+        <h2 className="text-xl font-bold font-sans text-white">
+          certifications & awards
         </h2>
+        <p className="text-xs font-mono text-neutral-400 mt-0.5">
+          verified credentials & competition achievements
+        </p>
       </div>
 
-      {/* Featured Awards Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 scroll-reveal">
+      {/* Featured Awards */}
+      <div className="space-y-4 mb-8 scroll-reveal">
         {awardsAndKeyCerts.map((item, idx) => (
-          <div key={idx} className="p-8 bg-surface-container border border-on-surface/20 border-l-4 border-l-tertiary flex flex-col justify-between">
-            <div>
-              <span className="px-2.5 py-1 bg-tertiary text-white font-label-sm text-[10px] uppercase font-bold mb-3 inline-block">
+          <div key={idx} className="ziffer-card p-6 border-l-4 border-l-[#95e78e]">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <span className="ziffer-pill ziffer-pill-lime text-[11px] py-0.5 px-2">
                 {item.category}
               </span>
-              <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-1">
-                {item.title}
-              </h3>
-              <p className="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wider mb-2">
-                {item.subtitle}
-              </p>
-              <p className="font-body-md text-body-md text-on-surface-variant">
-                {item.detail}
-              </p>
-            </div>
-
-            {item.link && (
-              <div className="mt-4 pt-3 border-t border-on-surface/15">
+              {item.link && (
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-label-sm text-xs text-tertiary uppercase tracking-widest flex items-center gap-1 font-bold hover:underline"
+                  className="text-xs font-mono text-[#95e78e] hover:underline flex items-center gap-1"
                 >
-                  <Linkedin size={14} /> LinkedIn Update <ExternalLink size={12} />
+                  <Linkedin size={13} /> LinkedIn Update <ExternalLink size={11} />
                 </a>
-              </div>
-            )}
+              )}
+            </div>
+
+            <h3 className="text-base font-bold font-sans text-white mb-1">
+              {item.title}
+            </h3>
+            <p className="text-xs font-mono text-neutral-300 mb-2">
+              {item.subtitle}
+            </p>
+            <p className="text-xs text-neutral-400 leading-relaxed font-sans">
+              {item.detail}
+            </p>
           </div>
         ))}
       </div>
 
-      {/* Certifications Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 stagger-children scroll-reveal">
+      {/* Credentials Stack */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 stagger-children scroll-reveal">
         
-        {/* Boomi Professional */}
-        <div className="p-8 bg-surface-container border border-on-surface/15">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-on-surface/15">
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface uppercase">
-              Boomi Professional
-            </h3>
-            <span className="font-label-sm text-label-sm text-tertiary font-bold font-mono">4 Certs</span>
+        <div className="ziffer-card p-5">
+          <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+            <h3 className="text-xs font-bold font-sans text-white">Boomi Professional</h3>
+            <span className="text-[#95e78e] font-mono text-[11px]">4 Certs</span>
           </div>
-          <ul className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+          <ul className="space-y-2 text-xs font-sans text-neutral-300">
             {boomiProfessional.map((cert, idx) => (
-              <li key={idx} className="flex items-start gap-2.5">
-                <span className="text-tertiary font-bold">•</span>
+              <li key={idx} className="flex items-start gap-1.5">
+                <span className="text-[#95e78e]">•</span>
                 <span>{cert}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Boomi Associate */}
-        <div className="p-8 bg-surface-container border border-on-surface/15">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-on-surface/15">
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface uppercase">
-              Boomi Associate
-            </h3>
-            <span className="font-label-sm text-label-sm text-tertiary font-bold font-mono">6 Certs</span>
+        <div className="ziffer-card p-5">
+          <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+            <h3 className="text-xs font-bold font-sans text-white">Boomi Associate</h3>
+            <span className="text-[#95e78e] font-mono text-[11px]">6 Certs</span>
           </div>
-          <ul className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+          <ul className="space-y-2 text-xs font-sans text-neutral-300">
             {boomiAssociate.map((cert, idx) => (
-              <li key={idx} className="flex items-start gap-2.5">
-                <span className="text-tertiary font-bold">•</span>
+              <li key={idx} className="flex items-start gap-1.5">
+                <span className="text-[#95e78e]">•</span>
                 <span>{cert}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Anthropic AI Tooling */}
-        <div className="p-8 bg-surface-container border border-on-surface/15">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-on-surface/15">
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface uppercase">
-              Anthropic AI Tooling
-            </h3>
-            <span className="font-label-sm text-label-sm text-tertiary font-bold font-mono">3 Certs</span>
+        <div className="ziffer-card p-5">
+          <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+            <h3 className="text-xs font-bold font-sans text-white">Anthropic AI</h3>
+            <span className="text-[#95e78e] font-mono text-[11px]">3 Certs</span>
           </div>
-          <ul className="space-y-3 font-body-md text-body-md text-on-surface-variant">
+          <ul className="space-y-2 text-xs font-sans text-neutral-300">
             {anthropicAiTooling.map((cert, idx) => (
-              <li key={idx} className="flex items-start gap-2.5">
-                <span className="text-tertiary font-bold">•</span>
+              <li key={idx} className="flex items-start gap-1.5">
+                <span className="text-[#95e78e]">•</span>
                 <span>{cert}</span>
               </li>
             ))}

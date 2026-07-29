@@ -1,82 +1,35 @@
 import Navbar from './components/Navbar';
 import Header from './components/Header';
-import Projects from './components/Projects';
-import Gallery from './components/Gallery';
 import About from './components/About';
-import Skills from './components/Skills';
-import Certifications from './components/Certifications';
+import Work from './components/Work';
+import Posts from './components/Posts';
 import Contact from './components/Contact';
-import { useScrollReveal } from './hooks/useScrollReveal';
 
 function App() {
-  useScrollReveal();
-
   return (
-    <div className="min-h-screen relative bg-surface text-on-surface font-geist selection:bg-tertiary selection:text-white">
-      {/* Top Navbar */}
+    <div className="min-h-screen bg-[#e6ecf5] text-slate-700 font-sans antialiased selection:bg-[#ff6b35] selection:text-white">
       <Navbar />
 
-      {/* Main Content */}
-      <main className="mt-16">
+      <main>
         <Header />
-        <Projects />
-        <Gallery />
         <About />
-        <Skills />
-        <Certifications />
+        <Work />
+        <Posts />
         <Contact />
       </main>
 
-      {/* Global STUDIO_X Footer */}
-      <footer className="w-full py-16 px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-8 max-w-[1280px] mx-auto border-t border-on-surface dark:border-outline-variant">
-        <div className="flex flex-col md:flex-row items-center gap-6">
+      {/* Footer */}
+      <footer className="py-12 max-w-[760px] mx-auto px-5 border-t border-slate-300/60 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-600">
+        <span>© {new Date().getFullYear()} Pamitha Kularathne</span>
+        <div className="flex items-center gap-5">
+          <a href="https://github.com/frostt86" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff6b35] transition-colors">github</a>
+          <a href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff6b35] transition-colors">linkedin</a>
           <a
             href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="font-headline-md text-headline-md font-extrabold text-on-surface uppercase tracking-tighter hover:text-tertiary transition-colors"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="hover:text-slate-900 transition-colors font-bold"
           >
-            PAMITHA_KULARATHNE
-          </a>
-          <p className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container">
-            © {new Date().getFullYear()} PAMITHA KULARATHNE. ALL RIGHTS RESERVED.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-8">
-          <a
-            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300"
-            href="https://github.com/frostt86"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300"
-            href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300"
-            href="mailto:jkularatn@gmail.com"
-          >
-            Email
-          </a>
-          <a
-            className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container hover:text-tertiary transition-colors duration-300 flex items-center"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          >
-            Back to Top <span className="material-symbols-outlined text-[14px] ml-1">arrow_upward</span>
+            top ↑
           </a>
         </div>
       </footer>

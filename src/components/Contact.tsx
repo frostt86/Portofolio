@@ -1,141 +1,86 @@
-import { useState, useEffect } from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 export default function Contact() {
-  const ref = useScrollReveal();
-  const [localTime, setLocalTime] = useState<string>('--:-- --');
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Asia/Colombo',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-      };
-      const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
-      setLocalTime(timeString);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section ref={ref} id="contact" className="py-24 px-6 md:px-16 max-w-[1280px] mx-auto border-t border-on-surface/15 text-center">
-      
-      {/* Availability Header */}
-      <div className="mb-8 scroll-reveal">
-        <span className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container mb-2 block font-bold">
-          Available for select consulting & full-stack projects
-        </span>
-        <h2 className="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tighter leading-[0.9] font-extrabold uppercase">
-          GET IN TOUCH
-        </h2>
-      </div>
+    <section id="contact" className="py-20 max-w-[760px] mx-auto px-5">
+      <hr className="section-divider mb-16" />
 
-      {/* Massive Email Link with Vibrant Orange Hover */}
-      <div className="w-full overflow-hidden mb-16 scroll-reveal">
-        <a
-          className="email-hover block font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface transition-all duration-500 ease-in-out decoration-none break-words font-extrabold"
-          href="mailto:jkularatn@gmail.com"
+      <p className="section-label mb-2">Let's Talk</p>
+      <h2 className="section-title mb-4">Get in Touch</h2>
+
+      <p className="text-sm text-slate-700 leading-relaxed mb-8 max-w-[540px] font-medium">
+        Open to integration consulting, full-stack development opportunities, and 
+        interesting collaboration projects. Drop me an email or connect on LinkedIn.
+      </p>
+
+      {/* Email — prominent Neumorphic Card */}
+      <a
+        href="mailto:jkularatn@gmail.com"
+        className="card p-6 flex items-center gap-5 group mb-6 block bg-[#e6ecf5] border border-white/80 shadow-[9px_9px_18px_#c2c9d6,-9px_-9px_18px_#ffffff] hover:border-[#ff6b35]/50 transition-all"
+      >
+        <div className="w-12 h-12 rounded-2xl bg-[#e6ecf5] border border-white/80 shadow-[inset_3px_3px_6px_#c2c9d6,inset_-3px_-3px_6px_#ffffff] flex items-center justify-center shrink-0">
+          <Mail size={22} className="text-[#ff6b35]" />
+        </div>
+        <div>
+          <p className="text-xs text-slate-500 font-mono font-bold mb-0.5">Email Address</p>
+          <p className="text-lg font-bold text-slate-900 group-hover:text-[#ff6b35] transition-colors">
+            jkularatn@gmail.com
+          </p>
+        </div>
+      </a>
+
+      {/* Social links */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <a 
+          href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="card p-4 flex items-center gap-3.5 group block bg-[#e6ecf5] border border-white/80 shadow-[7px_7px_14px_#c2c9d6,-7px_-7px_14px_#ffffff] hover:border-[#ff6b35]/50 transition-all"
         >
-          JKULARATN@GMAIL.COM
+          <div className="p-2 rounded-xl bg-[#e2e8f2] border border-white/80 shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff]">
+            <Linkedin size={18} className="text-[#0A66C2]" />
+          </div>
+          <div>
+            <p className="text-xs text-slate-500 font-mono font-bold">LinkedIn</p>
+            <p className="text-xs font-bold text-slate-900 group-hover:text-[#ff6b35] transition-colors">Pamitha K.</p>
+          </div>
         </a>
-      </div>
 
-      {/* Office & Local Time Row */}
-      <div className="flex flex-col md:flex-row gap-8 justify-center items-center w-full mb-16 border-t border-b border-on-surface/15 py-10 scroll-reveal">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container">
-            Primary Office
-          </span>
-          <p className="font-headline-md text-headline-md font-bold text-on-surface uppercase">
-            PANADURA, SRI LANKA
-          </p>
-        </div>
-
-        <div className="hidden md:block w-px h-12 bg-on-surface opacity-20 mx-8"></div>
-
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container">
-            Phone Contact
-          </span>
-          <p className="font-headline-md text-headline-md font-bold text-on-surface uppercase">
-            +94 (70) 159 4530
-          </p>
-        </div>
-
-        <div className="hidden md:block w-px h-12 bg-on-surface opacity-20 mx-8"></div>
-
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <span className="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container">
-            Local Time (SLST)
-          </span>
-          <p className="font-headline-md text-headline-md font-bold text-tertiary font-mono">
-            {localTime}
-          </p>
-        </div>
-      </div>
-
-      {/* Direct Contact Form */}
-      <div className="max-w-xl mx-auto text-left scroll-reveal">
-        <form
-          className="p-8 bg-surface-container border border-on-surface/15 space-y-4"
-          onSubmit={(e) => e.preventDefault()}
+        <a 
+          href="https://github.com/frostt86" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="card p-4 flex items-center gap-3.5 group block bg-[#e6ecf5] border border-white/80 shadow-[7px_7px_14px_#c2c9d6,-7px_-7px_14px_#ffffff] hover:border-[#ff6b35]/50 transition-all"
         >
-          <h3 className="font-headline-md text-headline-md font-bold text-on-surface uppercase mb-4">
-            Send Direct Inquiry
-          </h3>
-
-          <div>
-            <label htmlFor="studio-name" className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface block mb-2 font-bold">
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="studio-name"
-              className="w-full p-3.5 bg-surface border border-on-surface/20 text-on-surface focus:border-tertiary outline-none font-body-md text-body-md"
-              placeholder="Enter your name"
-            />
+          <div className="p-2 rounded-xl bg-[#e2e8f2] border border-white/80 shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff]">
+            <Github size={18} className="text-slate-900" />
           </div>
-
           <div>
-            <label htmlFor="studio-email" className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface block mb-2 font-bold">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="studio-email"
-              className="w-full p-3.5 bg-surface border border-on-surface/20 text-on-surface focus:border-tertiary outline-none font-body-md text-body-md"
-              placeholder="your@email.com"
-            />
+            <p className="text-xs text-slate-500 font-mono font-bold">GitHub</p>
+            <p className="text-xs font-bold text-slate-900 group-hover:text-[#ff6b35] transition-colors">frostt86</p>
           </div>
+        </a>
 
+        <div className="card-flat p-4 flex items-center gap-3.5 bg-[#e6ecf5] border border-white/80 shadow-[7px_7px_14px_#c2c9d6,-7px_-7px_14px_#ffffff]">
+          <div className="p-2 rounded-xl bg-[#e2e8f2] border border-white/80 shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff]">
+            <MapPin size={18} className="text-[#ff6b35]" />
+          </div>
           <div>
-            <label htmlFor="studio-message" className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface block mb-2 font-bold">
-              Project Details / Inquiry
-            </label>
-            <textarea
-              id="studio-message"
-              rows={4}
-              className="w-full p-3.5 bg-surface border border-on-surface/20 text-on-surface focus:border-tertiary outline-none font-body-md text-body-md resize-none"
-              placeholder="Describe your project or inquiry..."
-            />
+            <p className="text-xs text-slate-500 font-mono font-bold">Location</p>
+            <p className="text-xs font-bold text-slate-800">Colombo, Sri Lanka</p>
           </div>
-
-          <button
-            type="submit"
-            className="w-full bg-on-surface text-surface py-4 font-label-sm text-label-sm uppercase tracking-widest hover:bg-tertiary transition-colors duration-300 font-bold"
-          >
-            Submit Inquiry
-          </button>
-        </form>
+        </div>
       </div>
 
+      {/* Status */}
+      <div className="card-flat p-4 text-center bg-[#e6ecf5] border border-white/80 shadow-[6px_6px_12px_#c2c9d6,-6px_-6px_12px_#ffffff]">
+        <div className="flex items-center justify-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff6b35] animate-pulse" />
+          <span className="text-xs text-slate-700 font-semibold">
+            Currently available for <span className="text-slate-950 font-bold">consulting & development</span> projects
+          </span>
+        </div>
+      </div>
     </section>
   );
 }

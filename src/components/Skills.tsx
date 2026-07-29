@@ -24,7 +24,6 @@ const skillCategories = [
       'Business Rules',
       'Flow Control',
       'Sub-Processes',
-      'Dynamic Document Properties',
       'Environment Extensions',
       'Exception Handling',
     ],
@@ -33,7 +32,7 @@ const skillCategories = [
     title: 'Cloud & Collaboration',
     skills: [
       'Teams Webhooks',
-      'Confluence REST API',
+      'Confluence API',
       'ActiveCampaign API',
       'Pipedrive API',
       'AFAS Profit REST API',
@@ -45,7 +44,7 @@ const skillCategories = [
     title: 'Development & Databases',
     skills: [
       'Java (Advanced)',
-      'SQL / PostgreSQL / MSSQL',
+      'PostgreSQL / SQL',
       'Spring Boot',
       'Solidity',
       'React.js',
@@ -74,34 +73,30 @@ export default function Skills() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} id="skills" className="px-6 md:px-16 py-16 md:py-24 max-w-[1280px] mx-auto border-t border-on-surface/15">
+    <section ref={ref} id="skills" className="py-16 max-w-[760px] mx-auto px-4 border-t border-white/10">
       
-      {/* Heading */}
-      <div className="mb-12 scroll-reveal">
-        <span className="font-label-sm text-label-sm text-outline uppercase tracking-widest block mb-2">
-          // Technical Proficiency & Tooling Matrix
-        </span>
-        <h2 className="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight font-extrabold">
-          TECHNICAL SKILLS
+      {/* Header */}
+      <div className="mb-8 scroll-reveal">
+        <h2 className="text-xl font-bold font-sans text-white">
+          technical skills
         </h2>
+        <p className="text-xs font-mono text-neutral-400 mt-0.5">
+          tooling matrix & core technical proficiencies
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children scroll-reveal">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children scroll-reveal">
         {skillCategories.map((cat, idx) => (
-          <div key={idx} className="p-8 bg-surface-container border border-on-surface/15 flex flex-col justify-between">
+          <div key={idx} className="ziffer-card p-5 flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between mb-4 pb-3 border-b border-on-surface/15">
-                <h3 className="font-headline-md text-headline-md font-bold text-on-surface uppercase">
-                  {cat.title}
-                </h3>
-                <span className="font-label-sm text-label-sm text-tertiary font-mono font-bold">
-                  0{idx + 1}
-                </span>
-              </div>
+              <h3 className="text-sm font-bold font-sans text-white mb-3 pb-2 border-b border-white/10 flex items-center justify-between">
+                <span>{cat.title}</span>
+                <span className="text-[#95e78e] font-mono text-xs">0{idx + 1}</span>
+              </h3>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {cat.skills.map((skill, sIdx) => (
-                  <span key={sIdx} className="px-3 py-1.5 bg-surface text-on-surface font-mono text-xs border border-on-surface/10">
+                  <span key={sIdx} className="ziffer-pill text-xs py-0.5 px-2">
                     {skill}
                   </span>
                 ))}
