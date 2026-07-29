@@ -61,38 +61,42 @@ export default function SideScrollbar() {
     scrollToPercent(percent);
   };
 
-  /* Drag Handlers */
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
+  /* Touch & Drag Handlers */
+  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
     setIsDragging(true);
   };
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!isDragging || !trackRef.current) return;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
       const rect = trackRef.current.getBoundingClientRect();
-      const offsetY = e.clientY - rect.top;
+      const offsetY = clientY - rect.top;
       const percent = Math.min(Math.max((offsetY / rect.height) * 100, 0), 100);
       scrollToPercent(percent);
     };
 
-    const handleMouseUp = () => {
+    const handleEnd = () => {
       setIsDragging(false);
     };
 
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('mousemove', handleMove);
+      window.addEventListener('mouseup', handleEnd);
+      window.addEventListener('touchmove', handleMove);
+      window.addEventListener('touchend', handleEnd);
     }
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseup', handleEnd);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('touchend', handleEnd);
     };
   }, [isDragging]);
 
   return (
     <aside 
-      className="fixed right-3 sm:right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2 group/side select-none"
+      className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-2 group/side select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -100,7 +104,7 @@ export default function SideScrollbar() {
       {/* Top Scroll Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#e6ecf5] text-slate-600 hover:text-[#ff6b35] border border-white/90 shadow-[3px_3px_7px_#c2c9d6,-3px_-3px_7px_#ffffff] active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff] flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+        className="w-8 h-8 rounded-full bg-[#e6ecf5] text-slate-600 hover:text-[#ff6b35] border border-white/90 shadow-[3px_3px_7px_#c2c9d6,-3px_-3px_7px_#ffffff] active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff] flex items-center justify-center transition-all opacity-80 hover:opacity-100"
         title="Scroll to Top"
       >
         <ArrowUp size={13} />
@@ -110,7 +114,7 @@ export default function SideScrollbar() {
       <div 
         ref={trackRef}
         onClick={handleTrackClick}
-        className="relative w-4 sm:w-5 h-56 sm:h-64 rounded-full bg-[#dbe2ee] border border-white/90 shadow-[inset_4px_4px_8px_#c2c9d6,inset_-4px_-4px_8px_#ffffff] p-0.5 flex items-center justify-center cursor-pointer"
+        className="relative w-5 h-64 rounded-full bg-[#dbe2ee] border border-white/90 shadow-[inset_4px_4px_8px_#c2c9d6,inset_-4px_-4px_8px_#ffffff] p-0.5 flex items-center justify-center cursor-pointer"
       >
 
         {/* Section Notch Markers */}
@@ -127,8 +131,9 @@ export default function SideScrollbar() {
 
         {/* Tactile Pill-Shaped Slider Thumb Handle */}
         <div
-          onMouseDown={handleMouseDown}
-          className={`absolute left-1/2 -translate-x-1/2 w-6 sm:w-7 h-10 rounded-full bg-gradient-to-b from-[#ffffff] to-[#dce4f0] border border-white shadow-[4px_4px_10px_#b8c0cf,-4px_-4px_10px_#ffffff] cursor-grab active:cursor-grabbing transition-transform duration-75 flex flex-col items-center justify-center gap-1 ${
+          onMouseDown={handleStart}
+          onTouchStart={handleStart}
+          className={`absolute left-1/2 -translate-x-1/2 w-7 h-10 rounded-full bg-gradient-to-b from-[#ffffff] to-[#dce4f0] border border-white shadow-[4px_4px_10px_#b8c0cf,-4px_-4px_10px_#ffffff] cursor-grab active:cursor-grabbing transition-transform duration-75 flex flex-col items-center justify-center gap-1 ${
             isDragging ? 'scale-110 shadow-[6px_6px_14px_#b8c0cf,-6px_-6px_14px_#ffffff]' : ''
           }`}
           style={{
@@ -161,7 +166,7 @@ export default function SideScrollbar() {
       {/* Bottom Scroll Button */}
       <button
         onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
-        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#e6ecf5] text-slate-600 hover:text-[#ff6b35] border border-white/90 shadow-[3px_3px_7px_#c2c9d6,-3px_-3px_7px_#ffffff] active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff] flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+        className="w-8 h-8 rounded-full bg-[#e6ecf5] text-slate-600 hover:text-[#ff6b35] border border-white/90 shadow-[3px_3px_7px_#c2c9d6,-3px_-3px_7px_#ffffff] active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff] flex items-center justify-center transition-all opacity-80 hover:opacity-100"
         title="Scroll to Bottom"
       >
         <ArrowDown size={13} />
