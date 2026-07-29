@@ -1,51 +1,82 @@
+import { Layers, Cpu, Cloud, Code, UserCheck, Wrench } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const technicalSkills = [
+const skillCategories = [
   {
-    name: 'Spring Boot',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg',
+    title: 'Integration Platforms',
+    icon: Layers,
+    skills: [
+      'Dell Boomi AtomSphere',
+      'Boomi Flow Services',
+      'API Management',
+      'Integration Process Design',
+      'DataHub',
+    ],
   },
   {
-    name: 'Angular',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg',
+    title: 'Integration Technologies',
+    icon: Cpu,
+    skills: ['REST APIs', 'JSON', 'HTTP Client', 'XML', 'Webhooks', 'CSV', 'DDPs'],
   },
   {
-    name: 'Solidity',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/solidity/solidity-original.svg',
+    title: 'Boomi Components',
+    icon: Wrench,
+    skills: [
+      'Process Reporting',
+      'Maps & Cross-Reference Lookups',
+      'Decision Shapes',
+      'Business Rules',
+      'Flow Control',
+      'Sub-Processes',
+      'Dynamic Document Properties',
+      'Environment Extensions',
+      'Exception Handling',
+      'Atom Management',
+    ],
   },
   {
-    name: 'SQL',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
+    title: 'Cloud & Collaboration',
+    icon: Cloud,
+    skills: [
+      'Microsoft Teams Webhooks',
+      'Confluence REST API',
+      'ActiveCampaign API',
+      'Pipedrive API',
+      'AFAS Profit REST API',
+      'Brevo SMTP',
+      'Azure',
+    ],
   },
   {
-    name: 'Python',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+    title: 'Development & Databases',
+    icon: Code,
+    skills: [
+      'Java (Advanced)',
+      'SQL / PostgreSQL / MSSQL / MySQL',
+      'Spring Boot',
+      'Solidity',
+      'React.js',
+      'Angular',
+      'MongoDB',
+      'TypeScript',
+      'Git',
+      'Docker',
+      'Linux',
+      'Python',
+    ],
   },
   {
-    name: 'React',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
+    title: 'Soft Skills & Leadership',
+    icon: UserCheck,
+    skills: [
+      'Problem Solving',
+      'Project Management',
+      'Teamwork & Leadership',
+      'Adaptability under pressure',
+      'Creativity',
+      'Fluent Communication',
+    ],
   },
-  {
-    name: 'Boomi',
-    icon: '',
-  },
-  {
-    name: 'Elasticsearch',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/elasticsearch/elasticsearch-original.svg',
-  },
-  {
-    name: 'NoSQL',
-    icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
-  },
-];
-
-const softSkills = [
-  { name: 'Problem Solving', icon: '🧩' },
-  { name: 'Project Management', icon: '📋' },
-  { name: 'Teamwork', icon: '🤝' },
-  { name: 'Leadership', icon: '🎯' },
-  { name: 'Adaptability', icon: '🔄' },
-  { name: 'Communication', icon: '💬' },
 ];
 
 export default function Skills() {
@@ -54,72 +85,44 @@ export default function Skills() {
   return (
     <section ref={ref} id="skills" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-4">
+        
+        {/* Heading */}
         <div className="text-center mb-16 scroll-reveal">
-          <h2 className="text-4xl sm:text-5xl font-bold font-outfit gradient-text section-heading">
-            Skills
-          </h2>
-        </div>
-
-        {/* Technical Skills - Hex Grid */}
-        <div className="mb-20">
-          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-10 font-outfit"
-              style={{ color: 'var(--color-neon-cyan)' }}>
+          <h2 className="text-4xl sm:text-5xl font-extrabold font-outfit text-white uppercase tracking-tight section-heading-mono">
             Technical Skills
-          </h3>
-
-          <div className="hex-grid stagger-children scroll-reveal">
-            {technicalSkills.map((skill, index) => (
-              <div key={index} className="hex-item group">
-                {skill.icon ? (
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                      const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
-                      if (fallback) fallback.style.display = 'flex';
-                    }}
-                  />
-                ) : null}
-                <div
-                  className={`w-12 h-12 rounded-xl items-center justify-center text-xl font-bold ${skill.icon ? 'hidden' : 'flex'}`}
-                  style={{
-                    background: 'rgba(0, 240, 255, 0.1)',
-                    color: 'var(--color-neon-cyan)',
-                  }}
-                >
-                  {skill.name.charAt(0)}
-                </div>
-                <span className="text-sm font-semibold text-gray-300 group-hover:text-white transition-colors font-inter text-center">
-                  {skill.name}
-                </span>
-              </div>
-            ))}
-          </div>
+          </h2>
+          <p className="text-sm font-mono text-neutral-400 mt-4 uppercase tracking-widest">
+            // Comprehensive Expertise & Tooling Matrix
+          </p>
         </div>
 
-        {/* Soft Skills */}
-        <div>
-          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-10 font-outfit"
-              style={{ color: 'var(--color-neon-violet)' }}>
-            Soft Skills
-          </h3>
+        {/* Skill Matrices */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children scroll-reveal">
+          {skillCategories.map((cat, idx) => {
+            const IconComp = cat.icon;
+            return (
+              <div key={idx} className="hud-card hud-corner-notches p-6 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-4 pb-3 border-b border-neutral-800">
+                    <div className="p-2 rounded-md bg-white/10 text-white border border-white/20">
+                      <IconComp size={18} />
+                    </div>
+                    <h3 className="text-base font-bold font-outfit text-white uppercase">
+                      {cat.title}
+                    </h3>
+                  </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-3xl mx-auto stagger-children scroll-reveal">
-            {softSkills.map((skill, index) => (
-              <div
-                key={index}
-                className="glass-card p-5 text-center cursor-pointer group"
-              >
-                <div className="relative z-10">
-                  <span className="text-2xl mb-2 block">{skill.icon}</span>
-                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors font-inter">
-                    {skill.name}
-                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className="badge-mono text-xs">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

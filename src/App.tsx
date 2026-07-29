@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import ParticleCanvas from './components/ParticleCanvas';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
@@ -13,16 +13,16 @@ function App() {
   useScrollReveal();
 
   return (
-    <div className="min-h-screen relative" style={{ background: 'var(--color-void-950)' }}>
-      {/* Background layers */}
+    <div className="min-h-screen relative bg-black text-neutral-200">
+      {/* Background visual layers */}
       <ParticleCanvas />
-      <div className="grid-bg" />
+      <div className="grid-bg-mono" />
 
-      {/* Navigation */}
+      {/* Floating Navbar */}
       <Navbar />
 
-      {/* Main content */}
-      <main className="relative z-10">
+      {/* Main Sections */}
+      <main className="relative z-10 space-y-12">
         <Header />
         <About />
         <Projects />
@@ -32,79 +32,49 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 mt-12">
-        <div className="footer-glow-line" />
-        <div className="py-10 px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-              {/* Social links */}
-              <div className="flex items-center gap-5">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0, 240, 255, 0.3)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(0, 240, 255, 0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                  }}
-                >
-                  <Github size={18} className="text-gray-400 hover:text-white transition-colors" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(139, 92, 246, 0.3)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(139, 92, 246, 0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                  }}
-                >
-                  <Linkedin size={18} className="text-gray-400 hover:text-white transition-colors" />
-                </a>
-                <a
-                  href="mailto:jkularatn@gmail.com"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255, 0, 110, 0.3)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(255, 0, 110, 0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                  }}
-                >
-                  <Mail size={18} className="text-gray-400 hover:text-white transition-colors" />
-                </a>
-              </div>
-
-              {/* Copyright */}
-              <p className="text-sm text-gray-600 font-inter flex items-center gap-1">
-                © 2024 Pamitha Kularathne. Built with <Heart size={14} style={{ color: 'var(--color-neon-magenta)' }} />
-              </p>
+      <footer className="relative z-10 border-t border-neutral-900 bg-black/90 py-12 px-4 mt-20">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="text-left">
+            <div className="text-lg font-bold font-outfit text-white uppercase tracking-wider">
+              Pamitha Kularathne
+            </div>
+            <div className="text-xs font-mono text-neutral-400 mt-1">
+              Boomi Integration Consultant & Software Engineer
             </div>
           </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-white transition-all duration-300"
+              aria-label="GitHub Profile"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pamitha-kularathne-ba2b06295/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-white transition-all duration-300"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="mailto:jkularatn@gmail.com"
+              className="p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-white transition-all duration-300"
+              aria-label="Email Contact"
+            >
+              <Mail size={18} />
+            </a>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto mt-8 pt-6 border-t border-neutral-900 text-center text-xs font-mono text-neutral-500">
+          © {new Date().getFullYear()} Pamitha Kularathne. All rights reserved. High-contrast Cyber Minimalist Portfolio.
         </div>
       </footer>
     </div>
