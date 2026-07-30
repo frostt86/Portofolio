@@ -5,12 +5,14 @@ import Work from './components/Work';
 import Posts from './components/Posts';
 import Contact from './components/Contact';
 import SideScrollbar from './components/SideScrollbar';
+import FloatingSideObjects from './components/FloatingSideObjects';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#e6ecf5] text-slate-700 font-sans antialiased selection:bg-[#ff6b35] selection:text-white">
+    <div className="min-h-screen bg-[#e6ecf5] text-slate-700 font-sans antialiased selection:bg-[#ff6b35] selection:text-white relative overflow-x-hidden">
       <Navbar />
       <SideScrollbar />
+      <FloatingSideObjects />
 
       <main>
         <Header />

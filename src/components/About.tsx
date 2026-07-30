@@ -1,4 +1,6 @@
-import { ExternalLink, Linkedin, Terminal } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Linkedin, Terminal, Cpu } from 'lucide-react';
+import { RotaryDial } from './NeumorphicControls';
 
 const LINKEDIN_YENLO = 'https://www.linkedin.com/posts/ron-van-der-veeke-3a051a8b_last-week-i-finally-got-the-chance-to-meet-ugcPost-7409902097455947776-sowX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc';
 
@@ -17,6 +19,8 @@ const certGroups = [
 ];
 
 export default function About() {
+  const [activeDomainIdx, setActiveDomainIdx] = useState(0);
+
   return (
     <section id="about" className="py-20 max-w-[760px] mx-auto px-5">
       <hr className="section-divider mb-16" />
@@ -69,11 +73,11 @@ export default function About() {
         {/* Ambition Card */}
         <div className="card p-6 border-white/80 bg-[#e6ecf5] shadow-[9px_9px_18px_#c2c9d6,-9px_-9px_18px_#ffffff]">
           <div className="flex items-center justify-between mb-3">
-            <span className="pill pill-blue text-[10px]">Distributed Systems</span>
-            <span className="text-xs font-mono text-blue-600 font-bold">Web3 & Architecture</span>
+            <span className="pill pill-accent text-[10px]">Distributed Systems</span>
+            <span className="text-xs font-mono text-[#ff6b35] font-bold">Web3 & Architecture</span>
           </div>
           <h4 className="text-base font-bold text-slate-900 mb-1">BlockBallot Architecture</h4>
-          <p className="text-xs text-blue-600 font-mono font-bold mb-3">Decentralized Governance</p>
+          <p className="text-xs text-[#ff6b35] font-mono font-bold mb-3">Decentralized Governance</p>
           <p className="text-xs text-slate-600 leading-relaxed mb-3">
             Architected smart contract vote casting and cryptographic tallying for tamper-proof election integrity in Sri Lanka, showcased live at the CuttingEdge '25 showcase at Temple Trees.
           </p>
@@ -106,24 +110,64 @@ export default function About() {
         </div>
       </div>
 
-      {/* Technical Arsenal — Categorized Skill Matrix */}
-      <p className="section-label mb-4">Technical Arsenal & Skill Matrix</p>
+      {/* Technical Arsenal — Interactive Skill Matrix with Rotary Domain Selector */}
+      <div className="flex items-center justify-between gap-4 mb-4">
+        <div>
+          <p className="section-label mb-0.5">Technical Arsenal & Skill Matrix</p>
+          <p className="text-xs font-mono text-slate-500">Rotate dial to inspect domain focus</p>
+        </div>
+        
+        {/* Interactive Neumorphic Skill Rotary Selector */}
+        <div className="card-flat p-2 bg-[#e6ecf5] border border-white/80 rounded-2xl shadow-[5px_5px_10px_#c2c9d6,-5px_-5px_10px_#ffffff]">
+          <RotaryDial
+            valueIndex={activeDomainIdx}
+            maxIndex={skills.length}
+            onChange={(idx) => setActiveDomainIdx(idx)}
+            optionsLabel={skills.map(s => s.group.split(' ')[0])}
+            size={58}
+          />
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-        {skills.map((group) => (
-          <div key={group.group} className="card-flat p-5 border-white/80 bg-[#e6ecf5] shadow-[7px_7px_14px_#c2c9d6,-7px_-7px_14px_#ffffff]">
-            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 pb-2 border-b border-slate-300/80 flex items-center justify-between">
-              <span>{group.group}</span>
-              <span className="text-[10px] text-[#ff6b35] font-mono font-bold">● Verified</span>
-            </h4>
-            <div className="flex flex-wrap gap-1.5">
-              {group.items.map((s) => (
-                <span key={s} className="text-[11px] px-2.5 py-1 rounded-md bg-[#e2e8f2] text-slate-800 border border-white/80 font-semibold shadow-[inset_1px_1px_3px_#c2c9d6,inset_-1px_-1px_3px_#ffffff]">
-                  {s}
+        {skills.map((group, i) => {
+          const isFocused = i === activeDomainIdx;
+          return (
+            <div 
+              key={group.group} 
+              className={`card-flat p-5 border transition-all duration-300 bg-[#e6ecf5] ${
+                isFocused 
+                  ? 'border-[#ff6b35]/70 shadow-[inset_3px_3px_6px_#c2c9d6,inset_-3px_-3px_6px_#ffffff] scale-[1.01]' 
+                  : 'border-white/80 shadow-[7px_7px_14px_#c2c9d6,-7px_-7px_14px_#ffffff]'
+              }`}
+            >
+              <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 pb-2 border-b border-slate-300/80 flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                  <Cpu size={13} className={isFocused ? 'text-[#ff6b35]' : 'text-slate-500'} />
+                  {group.group}
                 </span>
-              ))}
+                <span className={`text-[10px] font-mono font-bold flex items-center gap-1 ${isFocused ? 'text-[#ff6b35]' : 'text-slate-400'}`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${isFocused ? 'bg-[#ff6b35] animate-pulse shadow-[0_0_6px_#ff6b35]' : 'bg-slate-400'}`} />
+                  {isFocused ? 'SELECTED' : 'VERIFIED'}
+                </span>
+              </h4>
+              <div className="flex flex-wrap gap-1.5">
+                {group.items.map((s) => (
+                  <span 
+                    key={s} 
+                    className={`text-[11px] px-2.5 py-1 rounded-md border font-semibold transition-colors ${
+                      isFocused 
+                        ? 'bg-[#ff6b35]/10 text-[#ff6b35] border-[#ff6b35]/30 shadow-[inset_1px_1px_2px_rgba(255,107,53,0.2)]'
+                        : 'bg-[#e2e8f2] text-slate-800 border-white/80 shadow-[inset_1px_1px_3px_#c2c9d6,inset_-1px_-1px_3px_#ffffff]'
+                    }`}
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Certifications & Industry Credentials */}
@@ -140,13 +184,13 @@ export default function About() {
       </div>
 
       {/* Academic Distinction Badge */}
-      <div className="card p-5 border-l-4 border-l-blue-600 mb-6 bg-[#e6ecf5] shadow-[8px_8px_16px_#c2c9d6,-8px_-8px_16px_#ffffff] flex items-center justify-between">
+      <div className="card p-5 border-l-4 border-l-[#ff6b35] mb-6 bg-[#e6ecf5] shadow-[8px_8px_16px_#c2c9d6,-8px_-8px_16px_#ffffff] flex items-center justify-between">
         <div>
-          <span className="pill pill-blue text-[10px] mb-1 inline-flex">Academic Distinction</span>
+          <span className="pill pill-accent text-[10px] mb-1 inline-flex">Academic Distinction</span>
           <h3 className="text-sm font-bold text-slate-900">Java Programming Certificate — IIT</h3>
           <p className="text-xs text-slate-600 mt-0.5 font-medium">Spring Boot, Microservices, Bootstrap, Thymeleaf Architecture</p>
         </div>
-        <span className="text-xs font-mono font-bold text-blue-600">Distinction</span>
+        <span className="text-xs font-mono font-bold text-[#ff6b35]">Distinction</span>
       </div>
 
       {/* Certification Breakdown Grid */}

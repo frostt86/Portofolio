@@ -7,6 +7,7 @@ import boomiPreview from '../assets/gallery/boomi_preview.png';
 import bankingPreview from '../assets/gallery/banking_preview.png';
 import cuttingedgeTeam from '../assets/gallery/cuttingedge_team.jpg';
 import innoservBooth from '../assets/gallery/innoserv_booth.jpg';
+import auraDecantPreview from '../assets/gallery/aura_decant_preview.jpg';
 
 export interface Project {
   id: string;
@@ -16,6 +17,7 @@ export interface Project {
   category: string;
   githubUrl?: string;
   linkedInUrl?: string;
+  liveUrl?: string;
   imageSrc: string;
   technologies: string[];
   summary: string;
@@ -26,6 +28,23 @@ const LINKEDIN_BLOCKBALLOT = 'https://www.linkedin.com/posts/pamitha-kularathne-
 const LINKEDIN_NOVALITH = 'https://www.linkedin.com/feed/update/urn:li:activity:7468995875151712256/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEeIgyoBBNzm5IteV-QcEnLoygAmq0ktIXc';
 
 const projectsData: Project[] = [
+  {
+    id: 'aura-decants',
+    title: 'Aura Decants — Luxury Fragrances',
+    year: '2025',
+    role: 'Full-Stack Web Architect',
+    category: 'Luxury E-Commerce',
+    liveUrl: 'https://a-ura-decant-new.vercel.app/',
+    githubUrl: 'https://vercel.com/pamitha-kularathnes-projects/a-ura-decant-new',
+    imageSrc: auraDecantPreview,
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'E-Commerce', 'Vercel'],
+    summary: 'High-end luxury fragrance & decant collection e-commerce platform. Engineered with immersive visual brand storytelling, decant volume customizers, cart management, and fluid responsive design.',
+    highlights: [
+      'Designed an ultra-luxury visual interface featuring rich hero video/image banners, refined serif typography, and micro-interactions.',
+      'Built interactive decant volume selection, shopping cart management, and seamless collection filtering.',
+      'Deployed on Vercel infrastructure with asset optimization and fast global response rates.',
+    ],
+  },
   {
     id: 'jck-visionary-build',
     title: 'JCK Visionary Build',

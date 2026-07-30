@@ -170,9 +170,9 @@
 }
 
 .pill-blue {
-  background: rgba(37, 99, 235, 0.12);
-  border-color: rgba(37, 99, 235, 0.35);
-  color: #2563eb;
+  background: rgba(255, 107, 53, 0.14);
+  border-color: rgba(255, 107, 53, 0.35);
+  color: var(--accent);
 }
 
 /* ═══════════════════════════════════════════════
@@ -216,6 +216,354 @@
 
 .animate-rolling:hover {
   animation-play-state: paused;
+}
+
+/* ═══════════════════════════════════════════════
+   AMBIENT FLOATING OBJECT ANIMATIONS
+   ═══════════════════════════════════════════════ */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(4deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-4deg); }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 8s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@keyframes liquid-wave {
+  0% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(-25%) scaleY(1.2); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+
+.animate-liquid-wave {
+  animation: liquid-wave 4s ease-in-out infinite alternate;
+}
+
+/* ═══════════════════════════════════════════════
+   SIDE SCROLLBAR COMPONENT
+   ═══════════════════════════════════════════════ */
+.side-scroll-btn {
+  background: var(--bg-raised, #e6ecf5);
+  color: var(--text-secondary, #64748b);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 3px 3px 7px #c2c9d6, -3px -3px 7px #ffffff;
+}
+
+.side-scroll-btn:active {
+  box-shadow: inset 2px 2px 4px #c2c9d6, inset -2px -2px 4px #ffffff;
+}
+
+.side-scroll-track {
+  background: #dbe2ee;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: inset 4px 4px 8px #c2c9d6, inset -4px -4px 8px #ffffff;
+}
+
+.side-scroll-thumb {
+  background: linear-gradient(to bottom, #ffffff, #dce4f0);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 4px 4px 10px #b8c0cf, -4px -4px 10px #ffffff;
+}
+
+.side-scroll-tooltip {
+  background: var(--bg-raised, #e6ecf5);
+  color: var(--text-primary, #1e293b);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 6px 6px 14px #c2c9d6, -6px -6px 14px #ffffff;
+}
+
+.side-scroll-groove {
+  background: #94a3b8;
+}
+
+/* Dark Mode Side Scrollbar Overrides */
+[data-theme="dark"] .side-scroll-btn {
+  background: #171b22;
+  color: #cbd5e1;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 3px 3px 7px #06080a, -3px -3px 7px #1e232b;
+}
+
+[data-theme="dark"] .side-scroll-btn:active {
+  box-shadow: inset 2px 2px 4px #06080a, inset -2px -2px 4px #1e232b;
+}
+
+[data-theme="dark"] .side-scroll-track {
+  background: #0e1015;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 4px 4px 8px #06080a, inset -4px -4px 8px #1e232b;
+}
+
+[data-theme="dark"] .side-scroll-thumb {
+  background: linear-gradient(to bottom, #22272f, #171b22);
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 4px 4px 10px #06080a, -4px -4px 10px #1e232b;
+}
+
+[data-theme="dark"] .side-scroll-tooltip {
+  background: #171b22;
+  color: #f3f4f6;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 6px 6px 14px #06080a, -6px -6px 14px #1e232b;
+}
+
+[data-theme="dark"] .side-scroll-groove {
+  background: #64748b;
+}
+
+/* ═══════════════════════════════════════════════
+   NAVBAR COMPONENT
+   ═══════════════════════════════════════════════ */
+.nav-bar {
+  background: #e6ecf5;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 8px 8px 16px #c2c9d6, -8px -8px 16px #ffffff;
+}
+
+.nav-brand {
+  background: #e6ecf5;
+  color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 2px 2px 5px #c2c9d6, inset -2px -2px 5px #ffffff;
+}
+
+.nav-link {
+  color: #475569;
+}
+
+.nav-link:hover {
+  color: #ff6b35;
+  box-shadow: inset 2px 2px 4px #c2c9d6, inset -2px -2px 4px #ffffff;
+  background: #e2e8f2;
+}
+
+.nav-divider {
+  background: #94a3b8;
+}
+
+/* Dark Mode Navbar */
+[data-theme="dark"] .nav-bar {
+  background: #171b22;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 8px 8px 16px #06080a, -8px -8px 16px #1e232b;
+}
+
+[data-theme="dark"] .nav-brand {
+  background: #1e232b;
+  color: #f3f4f6;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 2px 2px 4px #06080a, inset -2px -2px 4px #1e232b;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #ff6b35;
+  box-shadow: inset 2px 2px 4px #06080a, inset -2px -2px 4px #1e232b;
+  background: #0e1015;
+}
+
+[data-theme="dark"] .nav-divider {
+  background: #374151;
+}
+
+/* ═══════════════════════════════════════════════
+   THEME MODES: LIGHT (DEFAULT), DARK (CHARCOAL SLATE GRAY)
+   ═══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg: #0e1015;
+  --bg-raised: #171b22;
+  --bg-elevated: #1e232b;
+  --bg-inset: #0a0c10;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 107, 53, 0.6);
+  --text-primary: #f3f4f6;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --accent: #ff6b35;
+
+  --neu-shadow-extruded: 6px 6px 14px #06080a, -6px -6px 14px #1e232b;
+  --neu-shadow-hover: 8px 8px 18px #040506, -8px -8px 18px #22272f;
+  --neu-shadow-inset: inset 3px 3px 6px #06080a, inset -3px -3px 6px #1e232b;
+}
+
+/* Background Overrides for Charcoal Dark Theme */
+[data-theme="dark"] .bg-\[\#e6ecf5\],
+[data-theme="dark"] .bg-\[\#e2e8f2\],
+[data-theme="dark"] .bg-\[\#e2e8f2\]\/60,
+[data-theme="dark"] .card,
+[data-theme="dark"] .card-flat,
+[data-theme="dark"] .neu-card,
+[data-theme="dark"] .neu-btn {
+  background-color: #171b22 !important;
+}
+
+[data-theme="dark"] .neu-inset {
+  background-color: #0a0c10 !important;
+}
+
+/* Typography Overrides */
+[data-theme="dark"] [class*="text-slate-950"],
+[data-theme="dark"] [class*="text-slate-900"],
+[data-theme="dark"] [class*="text-slate-800"] {
+  color: #f3f4f6 !important;
+}
+
+[data-theme="dark"] [class*="text-slate-700"],
+[data-theme="dark"] [class*="text-slate-600"] {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] [class*="text-slate-500"],
+[data-theme="dark"] [class*="text-slate-400"] {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .border-white\/80,
+[data-theme="dark"] .border-white\/90,
+[data-theme="dark"] .border-white\/70,
+[data-theme="dark"] .border-slate-300\/80 {
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Dark Mode Neumorphic Shadow Overrides — Universal Catch-All */
+/* Extruded shadows: any class containing light-mode shadow colors */
+[data-theme="dark"] [class*="shadow-["][class*="#c2c9d6"]:not([class*="inset"]),
+[data-theme="dark"] [class*="shadow-["][class*="#b8c0cf"]:not([class*="inset"]),
+[data-theme="dark"] [class*="shadow-["][class*="#ffffff"]:not([class*="inset"]) {
+  box-shadow: 6px 6px 14px #06080a, -6px -6px 14px #1e232b !important;
+}
+
+/* Inset shadows: any inset class containing light-mode shadow colors */
+[data-theme="dark"] [class*="shadow-[inset"][class*="#c2c9d6"],
+[data-theme="dark"] [class*="shadow-[inset"][class*="#c5ccd8"],
+[data-theme="dark"] [class*="shadow-[inset"][class*="#ffffff"] {
+  box-shadow: inset 3px 3px 6px #06080a, inset -3px -3px 6px #1e232b !important;
+}
+
+/* Catch active: and hover: state shadows too */
+[data-theme="dark"] [class*="active:shadow-[inset"] {
+  --tw-shadow: inset 3px 3px 6px #06080a, inset -3px -3px 6px #1e232b;
+}
+
+/* Divider lines that use #c5ccd8 bg + #ffffff shadow */
+[data-theme="dark"] [class*="bg-[#c5ccd8]"] {
+  background-color: #1e232b !important;
+}
+[data-theme="dark"] [class*="shadow-[0_1px_0_#ffffff]"],
+[data-theme="dark"] [class*="shadow-[1px_0_0_#ffffff]"] {
+  box-shadow: none !important;
+}
+
+/* Dark Mode overrides for CSS-defined component classes */
+[data-theme="dark"] .neu-btn:hover {
+  box-shadow: 6px 6px 14px #06080a, -6px -6px 14px #1e232b;
+}
+
+[data-theme="dark"] .neu-btn-accent {
+  box-shadow: 5px 5px 12px #06080a, -5px -5px 12px #1e232b;
+}
+
+[data-theme="dark"] .neu-btn-accent:hover {
+  box-shadow: 6px 6px 16px #06080a, -6px -6px 16px #1e232b;
+}
+
+[data-theme="dark"] .pill {
+  background: #171b22;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 2px 2px 4px #06080a, inset -2px -2px 4px #1e232b;
+}
+
+[data-theme="dark"] .pill:hover {
+  background: rgba(255, 107, 53, 0.15);
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .neu-card,
+[data-theme="dark"] .card-flat {
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 6px 6px 14px #06080a, -6px -6px 14px #1e232b;
+}
+
+[data-theme="dark"] .card:hover,
+[data-theme="dark"] .neu-card:hover {
+  box-shadow: 8px 8px 18px #040506, -8px -8px 18px #22272f;
+}
+
+[data-theme="dark"] .img-frame {
+  background: #0e1015;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Also ensure bg-[#e6ecf5] and bg-[#e2e8f2] inline bg colors get overridden */
+[data-theme="dark"] [class*="bg-[#e6ecf5]"],
+[data-theme="dark"] [class*="bg-[#e2e8f2]"] {
+  background-color: #171b22 !important;
+}
+
+/* CYBERPUNK MODE — SUNSET NEON ORANGE */
+[data-theme="cyberpunk"] {
+  --bg: #0c0906;
+  --bg-raised: #18110b;
+  --bg-elevated: #241910;
+  --bg-inset: #060403;
+  --border: rgba(255, 107, 53, 0.4);
+  --border-hover: rgba(255, 120, 67, 0.8);
+  --text-primary: #ff8c5a;
+  --text-secondary: #fed7aa;
+  --text-muted: #ff6b35;
+  --accent: #ff6b35;
+
+  --neu-shadow-extruded: 5px 5px 12px #040302, -5px -5px 12px #261b12, 0 0 10px rgba(255, 107, 53, 0.2);
+  --neu-shadow-hover: 7px 7px 16px #030201, -7px -7px 16px #302216, 0 0 16px rgba(255, 107, 53, 0.4);
+  --neu-shadow-inset: inset 3px 3px 6px #040302, inset -3px -3px 6px #241910;
+}
+
+[data-theme="cyberpunk"] .bg-\[\#e6ecf5\],
+[data-theme="cyberpunk"] .bg-\[\#e2e8f2\],
+[data-theme="cyberpunk"] .card,
+[data-theme="cyberpunk"] .card-flat,
+[data-theme="cyberpunk"] .neu-card,
+[data-theme="cyberpunk"] .neu-btn {
+  background-color: #18110b !important;
+}
+
+[data-theme="cyberpunk"] .text-slate-900,
+[data-theme="cyberpunk"] .text-slate-800 {
+  color: #ff8c5a !important;
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+}
+
+[data-theme="cyberpunk"] .text-slate-700,
+[data-theme="cyberpunk"] .text-slate-600 {
+  color: #ffb38a !important;
+}
+
+[data-theme="cyberpunk"] .border-white\/80,
+[data-theme="cyberpunk"] .border-white\/90,
+[data-theme="cyberpunk"] .border-slate-300\/80 {
+  border-color: rgba(255, 107, 53, 0.35) !important;
 }
 
 /* ═══════════════════════════════════════════════

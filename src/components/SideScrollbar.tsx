@@ -28,7 +28,7 @@ export default function SideScrollbar() {
     // Identify active section
     const scrollPos = currentScroll + window.innerHeight / 3;
     for (const section of sections) {
-      const el = document.getElementById(section.id === 'hero' ? 'root' : section.id);
+      const el = document.getElementById(section.id);
       if (el) {
         const top = el.offsetTop;
         const height = el.offsetHeight;
@@ -62,7 +62,7 @@ export default function SideScrollbar() {
   };
 
   /* Touch & Drag Handlers */
-  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleStart = () => {
     setIsDragging(true);
   };
 
@@ -104,7 +104,7 @@ export default function SideScrollbar() {
       {/* Top Scroll Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="w-8 h-8 rounded-full bg-[#e6ecf5] text-slate-600 hover:text-[#ff6b35] border border-white/90 shadow-[3px_3px_7px_#c2c9d6,-3px_-3px_7px_#ffffff] active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff] flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+        className="side-scroll-btn w-8 h-8 rounded-full flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:text-[#ff6b35]"
         title="Scroll to Top"
       >
         <ArrowUp size={13} />
@@ -114,7 +114,7 @@ export default function SideScrollbar() {
       <div 
         ref={trackRef}
         onClick={handleTrackClick}
-        className="relative w-5 h-64 rounded-full bg-[#dbe2ee] border border-white/90 shadow-[inset_4px_4px_8px_#c2c9d6,inset_-4px_-4px_8px_#ffffff] p-0.5 flex items-center justify-center cursor-pointer"
+        className="side-scroll-track relative w-5 h-64 rounded-full p-0.5 flex items-center justify-center cursor-pointer"
       >
 
         {/* Section Notch Markers */}
@@ -133,8 +133,8 @@ export default function SideScrollbar() {
         <div
           onMouseDown={handleStart}
           onTouchStart={handleStart}
-          className={`absolute left-1/2 -translate-x-1/2 w-7 h-10 rounded-full bg-gradient-to-b from-[#ffffff] to-[#dce4f0] border border-white shadow-[4px_4px_10px_#b8c0cf,-4px_-4px_10px_#ffffff] cursor-grab active:cursor-grabbing transition-transform duration-75 flex flex-col items-center justify-center gap-1 ${
-            isDragging ? 'scale-110 shadow-[6px_6px_14px_#b8c0cf,-6px_-6px_14px_#ffffff]' : ''
+          className={`side-scroll-thumb absolute left-1/2 -translate-x-1/2 w-7 h-10 rounded-full cursor-grab active:cursor-grabbing transition-transform duration-75 flex flex-col items-center justify-center gap-1 ${
+            isDragging ? 'scale-110' : ''
           }`}
           style={{
             top: `calc(${scrollProgress}% - ${(scrollProgress / 100) * 40}px)`,
@@ -142,15 +142,15 @@ export default function SideScrollbar() {
         >
           {/* Tactile Pill Thumb Grooves & Accent Indicator */}
           <span className="w-3.5 h-0.5 rounded-full bg-[#ff6b35]" />
-          <span className="w-3 h-0.5 rounded-full bg-slate-400" />
-          <span className="w-3 h-0.5 rounded-full bg-slate-400" />
+          <span className="side-scroll-groove w-3 h-0.5 rounded-full" />
+          <span className="side-scroll-groove w-3 h-0.5 rounded-full" />
         </div>
 
       </div>
 
       {/* Floating Animated Neumorphic Section Badge Tooltip */}
       <div 
-        className={`absolute right-12 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#e6ecf5] border border-white/90 shadow-[6px_6px_14px_#c2c9d6,-6px_-6px_14px_#ffffff] text-xs font-mono font-bold text-slate-900 whitespace-nowrap pointer-events-none transition-all duration-300 ${
+        className={`side-scroll-tooltip absolute right-12 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl text-xs font-mono font-bold whitespace-nowrap pointer-events-none transition-all duration-300 ${
           isHovered || isDragging
             ? 'opacity-100 translate-x-0 scale-100'
             : 'opacity-0 translate-x-3 scale-95'
@@ -166,7 +166,7 @@ export default function SideScrollbar() {
       {/* Bottom Scroll Button */}
       <button
         onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
-        className="w-8 h-8 rounded-full bg-[#e6ecf5] text-slate-600 hover:text-[#ff6b35] border border-white/90 shadow-[3px_3px_7px_#c2c9d6,-3px_-3px_7px_#ffffff] active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff] flex items-center justify-center transition-all opacity-80 hover:opacity-100"
+        className="side-scroll-btn w-8 h-8 rounded-full flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:text-[#ff6b35]"
         title="Scroll to Bottom"
       >
         <ArrowDown size={13} />

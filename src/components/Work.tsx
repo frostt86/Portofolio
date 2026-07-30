@@ -12,6 +12,7 @@ import jckPreview from '../assets/gallery/jck_preview.png';
 import grandeurPreview from '../assets/gallery/grandeur_preview.png';
 import yenloAvurudu from '../assets/gallery/yenlo_avurudu_celebration.png';
 import financeTrackerPreview from '../assets/gallery/finance_tracker_preview.png';
+import auraDecantPreview from '../assets/gallery/aura_decant_preview.jpg';
 
 /* ─── Types ─── */
 interface Project {
@@ -22,6 +23,7 @@ interface Project {
   category: string;
   githubUrl?: string;
   linkedInUrl?: string;
+  liveUrl?: string;
   imageSrc: string;
   tech: string[];
   summary: string;
@@ -64,6 +66,23 @@ const projects: Project[] = [
       'Architected backend REST APIs and real-time telemetry data sync pipeline for wearable IoT sensors.',
       'Won 1st Place — International Exchange Division at the ICT InnoServ Awards 2025 in Taiwan.',
       'Integrated automated alert escalation workflows for abnormal maternal health readings.',
+    ],
+  },
+  {
+    id: 'aura-decants',
+    title: 'Aura Decants — Luxury Fragrances',
+    year: '2025',
+    role: 'Full-Stack Web Architect',
+    category: 'Luxury E-Commerce',
+    liveUrl: 'https://a-ura-decant-new.vercel.app/',
+    githubUrl: 'https://vercel.com/pamitha-kularathnes-projects/a-ura-decant-new',
+    imageSrc: auraDecantPreview,
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'E-Commerce', 'Vercel'],
+    summary: 'High-end luxury fragrance & decant collection e-commerce platform. Engineered with immersive visual brand storytelling, decant volume customizers, cart management, and fluid responsive design.',
+    highlights: [
+      'Designed an ultra-luxury visual interface featuring rich hero video/image banners, refined serif typography, and micro-interactions.',
+      'Built interactive decant volume selection, shopping cart management, and seamless collection filtering.',
+      'Deployed on Vercel infrastructure with asset optimization and fast global response rates.',
     ],
   },
   {
@@ -162,17 +181,50 @@ const rollingGallery = [...gallery, ...gallery];
 export default function Work() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [filter, setFilter] = useState<string>('All');
+
+  const categories = ['All', 'Web Apps & E-Commerce', 'Enterprise & Boomi', 'Blockchain & IoT'];
+
+  const filteredProjects = projects.filter((p) => {
+    if (filter === 'All') return true;
+    if (filter === 'Web Apps & E-Commerce') return p.category.includes('Luxury') || p.category.includes('Platform') || p.category.includes('Culinary') || p.category.includes('Financial') || p.category.includes('Commercial');
+    if (filter === 'Enterprise & Boomi') return p.category.includes('Enterprise') || p.category.includes('Banking');
+    if (filter === 'Blockchain & IoT') return p.category.includes('Blockchain') || p.category.includes('InnoServ') || p.category.includes('Winner');
+    return true;
+  });
 
   return (
     <section id="work" className="py-20 max-w-[960px] mx-auto px-5">
       <hr className="section-divider mb-16" />
 
       <p className="section-label mb-2">Portfolio</p>
-      <h2 className="section-title mb-10">Selected Work & Projects</h2>
+      <h2 className="section-title mb-8">Selected Work & Projects</h2>
+
+      {/* Tactile Neumorphic Category Filter Bar */}
+      <div className="flex flex-wrap items-center gap-2.5 mb-10">
+        <span className="text-xs font-mono font-bold text-slate-500 uppercase mr-1">Filter:</span>
+        {categories.map((cat) => {
+          const active = filter === cat;
+          return (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setFilter(cat)}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all duration-200 select-none ${
+                active
+                  ? 'bg-[#e2e8f2] text-[#ff6b35] border border-white/60 shadow-[inset_2px_2px_5px_#c2c9d6,inset_-2px_-2px_5px_#ffffff]'
+                  : 'bg-[#e6ecf5] text-slate-600 border border-white/80 shadow-[4px_4px_9px_#c2c9d6,-4px_-4px_9px_#ffffff] hover:text-slate-900 active:shadow-[inset_2px_2px_4px_#c2c9d6,inset_-2px_-2px_4px_#ffffff]'
+              }`}
+            >
+              {cat}
+            </button>
+          );
+        })}
+      </div>
 
       {/* Featured projects — Side by Side 2-Column Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16">
-        {projects.map((p) => (
+        {filteredProjects.map((p) => (
           <div 
             key={p.id} 
             className="card p-0 overflow-hidden cursor-pointer group hover:border-[#ff6b35]/50 transition-all duration-300 bg-[#e6ecf5] shadow-[9px_9px_18px_#c2c9d6,-9px_-9px_18px_#ffffff] flex flex-col justify-between" 
@@ -286,14 +338,19 @@ export default function Work() {
                 {selected.tech.map((t) => <span key={t} className="pill text-[10px]">{t}</span>)}
               </div>
 
-              <div className="flex gap-2 pt-4 border-t border-slate-300/80">
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-300/80">
+                {selected.liveUrl && (
+                  <a href={selected.liveUrl} target="_blank" rel="noopener noreferrer" className="pill pill-accent text-[11px] font-bold flex items-center gap-1.5">
+                    <ExternalLink size={13} /> Live Application
+                  </a>
+                )}
                 {selected.githubUrl && (
-                  <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer" className="pill pill-accent text-[11px]">
-                    <Github size={13} /> View GitHub Repository
+                  <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer" className="pill text-[11px] flex items-center gap-1.5">
+                    <Github size={13} /> Project / Deployment
                   </a>
                 )}
                 {selected.linkedInUrl && (
-                  <a href={selected.linkedInUrl} target="_blank" rel="noopener noreferrer" className="pill text-[11px]">
+                  <a href={selected.linkedInUrl} target="_blank" rel="noopener noreferrer" className="pill text-[11px] flex items-center gap-1.5">
                     <Linkedin size={13} /> LinkedIn Post <ExternalLink size={10} />
                   </a>
                 )}
