@@ -5,8 +5,9 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import innoservFirstPlace from '../assets/gallery/innoserv_first_place.jpg';
 import innoservBooth from '../assets/gallery/innoserv_booth.jpg';
 import innoservDelegates from '../assets/gallery/innoserv_delegates.jpg';
-import blockballotBooth from '../assets/gallery/blockballot_booth.jpg';
 import cuttingedgeTeam from '../assets/gallery/cuttingedge_team.jpg';
+
+const blockballotBooth = cuttingedgeTeam;
 
 export interface GalleryItem {
   id: string;

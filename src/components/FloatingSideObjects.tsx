@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Cpu, Terminal, Shield, Zap, Layers, Radio, Activity, Droplet } from 'lucide-react';
+import { useState } from 'react';
+import { Cpu, Shield, Zap, Radio, Activity } from 'lucide-react';
 import { soundFx } from './NeumorphicControls';
 
 export default function FloatingSideObjects() {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX, Sparkles, Sliders, Activity, Power, ShieldCheck, Zap, Sun, Moon } from 'lucide-react';
+import { Volume2, VolumeX, Sliders, Activity, Zap, Sun, Moon } from 'lucide-react';
 
 /* ─── Web Audio & Physical Haptic Vibration Generator ─── */
 class SoundEngine {

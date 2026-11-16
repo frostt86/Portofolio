@@ -2,11 +2,16 @@ import { useState } from 'react';
 import { ExternalLink, Linkedin, X, Maximize2 } from 'lucide-react';
 
 import innoservFirstPlace from '../assets/gallery/innoserv_first_place.jpg';
-import linkedinBlockballotShot from '../assets/gallery/linkedin_blockballot_shot.png';
-import linkedinRonShot from '../assets/gallery/linkedin_ron_shot.png';
-import linkedinSherlockShot from '../assets/gallery/linkedin_sherlock_shot.png';
-import linkedinRguLaunchShot from '../assets/gallery/linkedin_rgu_launch_shot.png';
-import linkedinCuttingedgeShot from '../assets/gallery/linkedin_rochani_shot.png';
+import innoservBooth from '../assets/gallery/innoserv_booth.jpg';
+import innoservDelegates from '../assets/gallery/innoserv_delegates.jpg';
+import cuttingedgeTeam from '../assets/gallery/cuttingedge_team.jpg';
+import yenloAvurudu from '../assets/gallery/yenlo_avurudu_celebration.png';
+
+const linkedinBlockballotShot = cuttingedgeTeam;
+const linkedinRonShot = innoservDelegates;
+const linkedinSherlockShot = yenloAvurudu;
+const linkedinRguLaunchShot = innoservBooth;
+const linkedinCuttingedgeShot = cuttingedgeTeam;
 
 interface PostItem {
   id: string;

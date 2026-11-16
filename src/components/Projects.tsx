@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { ExternalLink, Github, Linkedin, X } from 'lucide-react';
 
 import innoservFirstPlace from '../assets/gallery/innoserv_first_place.jpg';
-import blockballotBooth from '../assets/gallery/blockballot_booth.jpg';
 import boomiPreview from '../assets/gallery/boomi_preview.png';
 import bankingPreview from '../assets/gallery/banking_preview.png';
 import cuttingedgeTeam from '../assets/gallery/cuttingedge_team.jpg';
 import innoservBooth from '../assets/gallery/innoserv_booth.jpg';
 import auraDecantPreview from '../assets/gallery/aura_decant_preview.jpg';
+
+const blockballotBooth = cuttingedgeTeam;
 
 export interface Project {
   id: string;

@@ -2,17 +2,18 @@ import { useState } from 'react';
 import { ExternalLink, Github, Linkedin, X, Maximize2 } from 'lucide-react';
 
 import innoservFirstPlace from '../assets/gallery/innoserv_first_place.jpg';
-import blockballotBooth from '../assets/gallery/blockballot_booth.jpg';
 import boomiPreview from '../assets/gallery/boomi_preview.png';
 import bankingPreview from '../assets/gallery/banking_preview.png';
 import cuttingedgeTeam from '../assets/gallery/cuttingedge_team.jpg';
 import innoservBooth from '../assets/gallery/innoserv_booth.jpg';
 import innoservDelegates from '../assets/gallery/innoserv_delegates.jpg';
-import jckPreview from '../assets/gallery/jck_preview.png';
-import grandeurPreview from '../assets/gallery/grandeur_preview.png';
 import yenloAvurudu from '../assets/gallery/yenlo_avurudu_celebration.png';
 import financeTrackerPreview from '../assets/gallery/finance_tracker_preview.png';
 import auraDecantPreview from '../assets/gallery/aura_decant_preview.jpg';
+
+const blockballotBooth = cuttingedgeTeam;
+const jckPreview = bankingPreview;
+const grandeurPreview = auraDecantPreview;
 
 /* ─── Types ─── */
 interface Project {
